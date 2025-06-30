@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>atechlo.com | Próximamente</title>
+    <style>
+        /* Fuente elegante y sistema de respaldo */
+        body {
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f8f9fa;
+            color: #333;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .container {
+            max-width: 600px;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(8px);
+            animation: fadeIn 1.5s ease;
+        }
+
+        h1 {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            color: #7f8c8d;
+        }
+
+        .logo {
+            max-width: 120px;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .divider {
+            height: 3px;
+            width: 80px;
+            background: linear-gradient(to right, #3498db, #9b59b6);
+            margin: 1.5rem auto;
+            border-radius: 3px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            color: #3498db;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #9b59b6;
+            transform: translateY(-2px);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Efecto de partículas sutiles (opcional) */
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Efecto partículas (opcional) -->
+    <canvas id="particles"></canvas>
+
+    <div class="container">
+        <!-- Reemplaza con tu logo -->
+        <img src="https://via.placeholder.com/120x60?text=ATECHLO" alt="atechlo.com" class="logo">
+
+        <h1>Estamos construyendo algo increíble</h1>
+        <div class="divider"></div>
+        <p>Nuestro sitio web está en desarrollo. Estamos trabajando arduamente para ofrecerte una experiencia excepcional.</p>
+        <p><strong>Vuelve pronto.</strong> La espera valdrá la pena.</p>
+
+        <!-- Enlaces de contacto (opcional) -->
+        <div class="social-links">
+            <a href="mailto:info@atechlo.com" target="_blank">✉️ Contacto</a>
+            <a href="https://linkedin.com/company/atechlo" target="_blank">🔗 LinkedIn</a>
+        </div>
+    </div>
+
+    <!-- Script para partículas (opcional) -->
+    <script>
+        // Configuración mínima de partículas
+        const canvas = document.getElementById('particles');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const particles = [];
+        for (let i = 0; i < 60; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                size: Math.random() * 3 + 1,
+                speedX: Math.random() * 1 - 0.5,
+                speedY: Math.random() * 1 - 0.5
+            });
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = 'rgba(52, 152, 219, 0.5)';
+            
+            particles.forEach(particle => {
+                particle.x += particle.speedX;
+                particle.y += particle.speedY;
+                
+                if (particle.x < 0 || particle.x > canvas.width) particle.speedX *= -1;
+                if (particle.y < 0 || particle.y > canvas.height) particle.speedY *= -1;
+                
+                ctx.beginPath();
+                ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+                ctx.fill();
+            });
+            
+            requestAnimationFrame(animate);
+        }
+        
+        animate();
+    </script>
+</body>
+</html>
