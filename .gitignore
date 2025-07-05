@@ -1,0 +1,5 @@
+.bash_history
+*.log
+*.tmp
+*@github.com
+.ssh/config
