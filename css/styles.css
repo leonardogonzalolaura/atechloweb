@@ -252,7 +252,7 @@ body {
     display: flex;
     flex-direction: column;
     text-align: center;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    backgrond: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);no
     padding-top: 80px; /* Igual a la altura del navbar */
     box-sizing: border-box; /* Importante para el cálculo de altura */
 }
@@ -299,7 +299,7 @@ p {
 /* Estilos generales para la sección */
 .services-section {
   padding: 60px 20px;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
 }
 
@@ -319,7 +319,7 @@ p {
 .services-container {
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 70px;
 }
 
 /* Tarjeta de servicio */
