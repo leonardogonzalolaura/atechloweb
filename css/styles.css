@@ -168,14 +168,6 @@
     background: url('../img/BANER-HERO1.png') center/cover no-repeat;
     color: white;
 }
-.banner-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Oscurece la imagen para mejor legibilidad */
-}
 
 .banner-content {
     position: relative; /* Para que el texto aparezca sobre el overlay */
@@ -243,6 +235,10 @@
 /* --- Estilos del cuerpo --- */
 /* --- Estilos del cuerpo --- */
 body {
+    
+ 
+  width: 100%;
+ 
     overflow-x: hidden;
     margin: 0;
     padding: 0;
@@ -361,13 +357,13 @@ p {
   padding-bottom: 10px;
 }
 
-.service-content h3::after {
+.service-cntent h3::after {
   content: '●●●●';
   position: absolute;
-  bottom: 0;
-  left: 0;
-  color: #ffcc00;
-  font-size: 0.8rem;
+  bottom: 0px;
+  left: 0px;
+  color: #82f065;
+  font-size: 2rem;
 }
 
 .service-content p {
@@ -389,6 +385,157 @@ p {
 
 .interest-btn:hover {
   background-color: #004d99;
+}
+
+
+
+/* Estilos para el banner con contenido integrado */
+.hero-banner {
+     left: 0;
+    margin-left: calc(-50vw + 50%);
+    width: 100vw; /* Viewport completo */
+  left: 0;
+  right: 0;
+
+  background-image: url('../img/banner-12.png');
+  background-size: cover;
+  background-position: center;
+
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: white;
+  padding: 80px 0;
+}
+
+
+.container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.hero-banner h1 {
+  font-size: 5rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 80px;
+}
+
+/* Estilos para las 3 columnas dentro del banner */
+.about-columns {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  margin-top: 50px;
+}
+
+.about-column {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  border-radius: 10px;
+  padding: 40px 30px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s;
+}
+
+.about-column:hover {
+  transform: translateY(-10px);
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.column-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 25px;
+}
+
+.column-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+.about-column h3 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.about-column p {
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.values-list {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+}
+
+.values-list li {
+  position: relative;
+  padding-left: 25px;
+  margin-bottom: 12px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.values-list li::before {
+  content: '•';
+  color: white;
+  font-size: 1.8rem;
+  position: absolute;
+  left: 0;
+  top: -5px;
+}
+
+/* Estilos para la sección inferior */
+.technology-section {
+  padding: 80px 0;
+  background: white;
+  text-align: center;
+}
+
+/* ... (mantén el resto del CSS de la sección inferior igual) ... */
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .about-columns {
+    flex-wrap: wrap;
+  }
+  
+  .about-column {
+    flex: 100%;
+    margin-bottom: 30px;
+  }
+  
+  .hero-banner h1 {
+    font-size: 3.5rem;
+    margin-bottom: 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-banner {
+    min-height: auto;
+    padding: 60px 0;
+  }
+  
+  .hero-banner h1 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+  }
+  
+  .about-column {
+    padding: 30px 20px;
+  }
 }
 
 /* Versión para escritorio */
