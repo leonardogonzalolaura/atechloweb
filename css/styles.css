@@ -421,3 +421,449 @@ p {
     height: 200px;
   }
 }
+/* Estilos generales */
+.about-section {
+  padding: 80px 0;
+  background-color: #226bb2;
+}
+
+.container {
+    background: rgb(34 107 178);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 60px;
+  color: #ffffff;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: #0066cc;
+  margin: 15px auto 0;
+}
+
+/* Estilos para las tarjetas */
+.about-cards {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.about-card {
+  flex: 1;
+  background: #226bb2;
+  border-radius: 8px;
+  padding: 40px 30px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+  text-align: center;
+}
+
+.about-card:hover {
+  transform: translateY(-10px);
+}
+
+.card-image {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 25px;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.about-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: #0066cc;
+}
+
+.about-card p {
+  line-height: 1.6;
+  color: #ffffff;
+}
+
+/* Estilos para la lista de valores */
+.values-list {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+}
+
+.values-list li {
+  position: relative;
+  padding-left: 25px;
+  margin-bottom: 12px;
+  line-height: 1.5;
+  color: #ffffff;
+}
+
+.values-list li::before {
+  content: '•';
+  color: #0066cc;
+  font-size: 1.8rem;
+  position: absolute;
+  left: 0;
+  top: -5px;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .about-cards {
+    flex-wrap: wrap;
+  }
+  
+  .about-card {
+    flex: 100%;
+    margin-bottom: 30px;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-section {
+    padding: 60px 0;
+  }
+  
+  .card-image {
+    width: 80px;
+    height: 80px;
+  }
+}
+/* Estructura base */
+.logistica-section {
+  padding: 80px 0;
+  background: #f8f9fa;
+}
+
+.logistica-wrapper {
+  max-width: 1900px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Titulo principal */
+.logistica-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 60px;
+  color: #333;
+  position: relative;
+}
+
+.logistica-title span {
+  color: #0066cc;
+  font-weight: bold;
+}
+
+/* Grid de imágenes */
+.logistica-grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 150px;
+  position: relative;
+  margin-bottom: 60px;
+}
+
+/* Estilos de imágenes */
+.logistica-img-left,
+.logistica-img-right {
+  flex: 1;
+  max-width: 1000px;
+  height: 600px;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  position: relative;
+}
+
+.logistica-img-left img,
+.logistica-img-right img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.5s ease;
+}
+
+/* Efecto hover imágenes */
+.logistica-img-left:hover img,
+.logistica-img-right:hover img {
+  transform: scale(1.05);
+}
+
+/* Caja central con fondo blanco */
+.logistica-center-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  background: white;
+  padding: 20px 50px;
+  border-radius: 8px;
+  box-shadow: 0 0 0 10px rgba(255,255,255,0.7), 
+              0 5px 30px rgba(0,0,0,0.2);
+  border: 2px solid #0066cc;
+  text-align: center;
+}
+
+.logistica-center-box h3 {
+  font-size: 3rem;
+  color: #0066cc;
+  margin: 0;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.logistica-center-box span {
+  display: block;
+  font-size: 2.5rem;
+  color: #ff6600;
+  font-weight: bold;
+}
+
+/* Botones */
+.logistica-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 750px;
+  margin-top: 20px;
+}
+
+.logistica-btn {
+  display: inline-block;
+  padding: 15px 40px;
+  background: #0066cc;
+  color: white;
+  text-decoration: none;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  transition: all 0.3s;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.logistica-btn:hover {
+  background: #004d99;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .logistica-center-box h3 {
+    font-size: 2.5rem;
+  }
+  
+  .logistica-center-box span {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .logistica-grid {
+    flex-direction: column;
+    gap: 40px;
+  }
+  
+  .logistica-img-left,
+  .logistica-img-right {
+    max-width: 100%;
+    height: 300px;
+  }
+  
+  .logistica-center-box {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    margin: -20px auto 30px;
+    width: 80%;
+  }
+}
+
+@media (max-width: 576px) {
+  .logistica-title {
+    font-size: 2rem;
+  }
+  
+  .logistica-center-box {
+    padding: 15px 30px;
+    width: 90%;
+  }
+  
+  .logistica-center-box h3 {
+    font-size: 2rem;
+  }
+  
+  .logistica-center-box span {
+    font-size: 1.8rem;
+  }
+  
+  .logistica-buttons {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .logistica-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* Sección de contacto */
+.contacto-section {
+  background-color: #0066cc;
+  color: white;
+  padding: 80px 0;
+}
+
+.contacto-container2 {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Texto introductorio */
+.contacto-intro {
+  text-align: center;
+  font-size: 1.3rem;
+  line-height: 1.6;
+  margin-bottom: 60px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Contenedor principal */
+.contacto-content2 {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+/* Imagen izquierda */
+.contacto-imagen {
+  flex: 1;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.contacto-imagen img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.contacto-imagen:hover img {
+  transform: scale(1.03);
+}
+
+/* Formulario derecho */
+.contacto-formulario {
+  flex: 1;
+  background: white;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.form-contacto {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+}
+
+.form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.contacto-btn {
+  background-color: #ff6600;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 10px;
+}
+
+.contacto-btn:hover {
+  background-color: #e65c00;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .contacto-content2 {
+    flex-direction: column;
+  }
+  
+  .contacto-imagen,
+  .contacto-formulario {
+    width: 100%;
+  }
+  
+  .form-row {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .contacto-intro {
+    font-size: 1.1rem;
+  }
+  
+  .contacto-formulario {
+    padding: 25px;
+  }
+}
