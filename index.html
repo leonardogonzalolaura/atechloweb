@@ -10,7 +10,7 @@
     <!-- Barra de navegación responsive -->
     <nav class="navbar">
         <div class="logo">
-            <img src="ruta/a/tu-logo.png" alt="Logo">
+            <img src="img\logo1.png" alt="Logo">
         </div>
         
         <!-- Botón para móviles -->
@@ -23,18 +23,27 @@
         <ul class="nav-links" id="nav-links">
             <li><a href="#">Inicio</a></li>
             <li class="dropdown">
-                <a href="#">Servicios TI ▼</a>
-                <div class="dropdown-content">
-                    <a href="#">Desarrollo Web</a>
-                    <a href="#">Redes</a>
-                    <a href="#">Ciberseguridad</a>
-                </div>
-            </li>
+    <a href="#">Servicios TI 
+        <svg class="dropdown-icon" width="12" height="12" viewBox="0 0 24 24" fill="none">
+            <path d="M7 10L12 15L17 10" stroke="#82f065" stroke-width="2"/> <!-- Flecha blanca -->
+        </svg>
+    </a>
+    <div class="dropdown-content">
+        <a href="#">Desarrollo Web</a>
+        <a href="#">Redes</a>
+        <a href="#">Ciberseguridad</a>
+    </div>
+</li>
             <li><a href="#">Soluciones Logísticas</a></li>
             <li><a href="#">Portafolio</a></li>
             <li><a href="#">Contacto</a></li>
         </ul>
     </nav>
+
+     <!-- Efecto partículas (opcional) -->
+    <canvas id="particles"></canvas>
+
+
      <section class="banner">
     
     <div class="banner-overlay"></div> <!-- Para oscurecer la imagen de fondo -->
@@ -83,7 +92,7 @@
     height: 500px;
 ">
       <div class="service-image">
-        <img src="img\servicio3.pngs" alt="Infraestructura IT">
+        <img src="img\servicio3.png" alt="Infraestructura IT">
       </div>
       <div class="service-content">
         <h3>INFRAESTRUCTURA IT</h3>
@@ -96,9 +105,12 @@
 
 <section class="about-section">
   <div class="container1">
-    <h2 class="section-title">SOMOS</h2>
+    <h2 class="section-title">SOMOS ATECHLO</h2>
     
-    <div class="about-cards">
+    <div class="about-cards" style="
+    padding-left: 50px;
+    padding-right: 50px;
+">
       <!-- Tarjeta Misión -->
       <div class="about-card">
         <div class="card-image">
@@ -146,7 +158,7 @@
       <div class="logistica-grid">
         <!-- Imagen izquierda -->
         <div class="logistica-img-left">
-          <img src="img/seguridad-logistica.jpg" alt="Servicio de Seguridad">
+          <img src="img\auto1.png" alt="Servicio de Seguridad">
         </div>
         
         <!-- Texto central con fondo blanco -->
@@ -156,7 +168,7 @@
         
         <!-- Imagen derecha -->
         <div class="logistica-img-right">
-          <img src="img/alquiler-autos.jpg" alt="Alquiler de Autos">
+          <img src="img\auto2.png" alt="Alquiler de Autos">
         </div>
       </div>
       
@@ -170,62 +182,67 @@
 </section>
 
 <section class="contacto-section">
-  <div class="contacto-container2">
-    <!-- Texto introductorio -->
-    <div class="contacto-intro">
-      <p>Conversemos sobre cómo podemos ayudar a tu organización en la optimización y transformación de tu negocio a través de la tecnología.</p>
+  <!-- Parte superior con texto en fondo azul -->
+  <div class="contacto-header">
+    <div class="container">
+      <p class="contacto-intro">Conversemos sobre cómo podemos ayudar a tu organización en la <strong>optimización y transformación</strong> de tu negocio a través de la tecnología.</p>
     </div>
-    
-    <!-- Contenido principal -->
-    <div class="contacto-content2">
-      <!-- Imagen izquierda -->
-      <div class="contacto-imagen">
-        <img src="img/contacto-imagen.jpg" alt="Equipo de tecnología trabajando">
-      </div>
-      
-      <!-- Formulario derecho -->
-      <div class="contacto-formulario">
-        <form class="form-contacto">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="nombre">NOMBRE *</label>
-              <input type="text" id="nombre" required>
+  </div>
+
+  <!-- Contenedor principal con imagen y formulario -->
+  <div class="contacto-main">
+    <div class="container3">
+      <div class="contacto-grid">
+        <!-- Columna izquierda con imagen -->
+        <div class="contacto-img-col">
+          <img src="img\form1.png" alt="Equipo de tecnología trabajando" class="contacto-imagen">
+        </div>
+
+        <!-- Columna derecha con formulario -->
+        <div class="contacto-form-col">
+          <form class="contacto-form" tyle="
+    padding-right: 70px;
+">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="nombre">NOMBRE *</label>
+                <input type="text" id="nombre" required>
+              </div>
+              <div class="form-group">
+                <label for="apellido">APELLIDO *</label>
+                <input type="text" id="apellido" required>
+              </div>
             </div>
+
             <div class="form-group">
-              <label for="apellido">APELLIDO *</label>
-              <input type="text" id="apellido" required>
+              <label for="compania">COMPAÑÍA *</label>
+              <input type="text" id="compania" required>
             </div>
-          </div>
-          
-          <div class="form-group">
-            <label for="compania">COMPAÑÍA *</label>
-            <input type="text" id="compania" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="email">CORREO ELECTRÓNICO *</label>
-            <input type="email" id="email" placeholder="nama@example.com" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="telefono">TELÉFONO</label>
-            <input type="tel" id="telefono">
-          </div>
-          
-          <div class="form-group">
-            <label for="mensaje">MENSAJE *</label>
-            <textarea id="mensaje" rows="4" required></textarea>
-          </div>
-          
-          <button type="submit" class="contacto-btn">CONTACTANOS</button>
-        </form>
+
+            <div class="form-group">
+              <label for="email">CORREO ELECTRÓNICO *</label>
+              <input type="email" id="email" placeholder="nama@example.com" required>
+            </div>
+
+            <div class="form-group">
+              <label for="telefono">TELÉFONO</label>
+              <input type="tel" id="telefono">
+            </div>
+
+            <div class="form-group">
+              <label for="mensaje">MENSAJE *</label>
+              <textarea id="mensaje" rows="4" required></textarea>
+            </div>
+
+            <button type="submit" class="contacto-btn">CONTACTANOS</button>
+          </form>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-    <!-- Efecto partículas (opcional) -->
-    <canvas id="particles"></canvas>
+   
 
     
 
