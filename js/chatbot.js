@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', function() {
 
   if (!window.CONFIG || typeof window.CONFIG.DEEPSEEK_API_KEY !== 'string') {
-    showConfigError();
+    //showConfigError();
     console.error('Configuración incorrecta:', window.CONFIG);
     return; // Detiene la ejecución
   }
