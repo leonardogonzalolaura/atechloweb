@@ -58,48 +58,50 @@
     <h2>Listo para innovar? <span>explora NUESTROS SERVICIOS</span></h2>
   </div>
 
-  <div class="services-container"> 
+  <div class="services-container">
     <!-- Servicio 1 -->
-    <div class="service-card" style="
-    height: 500px;
-">  
+    <div class="service-card">
       <div class="service-image">
-        <img src="img\servicio1.png" alt="Consultoría Digital">
+        <img src="img/servicio1.png" alt="Consultoría Digital">
       </div>
       <div class="service-content">
-        <h3>CONSULTORIA DIGITAL</h3>
+        <div class="service-title-container">
+          <h3>CONSULTORIA DIGITAL</h3>
+          <span class="green-dots">●●●●</span>
+        </div>
+        <p>Contar con un plan <strong>estrategico</strong> de <strong>tecnología</strong> alineado con la organización es indispensable para asegurar que se genere el valor esperado.</p>
+        <a href="#" class="interest-btn">ME INTERESA</a>
+      </div>
+    </div>
+    
+    <div class="service-card">
+      <div class="service-image">
+        <img src="img\servicio2.png" alt="Consultoría Digital">
+      </div>
+      <div class="service-content">
+        <div class="service-title-container">
+          <h3>CONSULTORIA DIGITAL</h3>
+          <span class="green-dots">●●●●</span>
+        </div>
         <p>Contar con un plan <strong>estrategico</strong> de <strong>tecnología</strong> alineado con la organización es indispensable para asegurar que se genere el valor esperado.</p>
         <a href="#" class="interest-btn">ME INTERESA</a>
       </div>
     </div>
 
-    <!-- Servicio 2 -->
-    <div class="service-card" style="
-    height: 500px;
-"> 
+    <div class="service-card">
       <div class="service-image">
-        <img src="img\servicio2.png" alt="Desarrollo de Software">
+        <img src="img\servicio3.png" alt="Consultoría Digital">
       </div>
       <div class="service-content">
-        <h3>DESARROLLO DE SOFTWARE</h3>
-        <p>Nuestro equipo entrega mantención y soporte a medida, para clientes que requieren desarrollar soluciones específicas para resolver sus problemáticas de negocio.</p>
-        <a href="#" class="interest-btn">ME INTERESA</a>
-      </div>
-    </div>
-
-    <!-- Servicio 3 -->
-    <div class="service-card" style="
-    height: 500px;
-">
-      <div class="service-image">
-        <img src="img\servicio3.png" alt="Infraestructura IT">
-      </div>
-      <div class="service-content">
-        <h3>INFRAESTRUCTURA IT</h3>
+        <div class="service-title-container">
+          <h3>CONSULTORIA DIGITAL</h3>
+          <span class="green-dots">●●●●</span>
+        </div>
         <p>Contar con un plan <strong>estrategico</strong> de <strong>tecnología</strong> alineado con la organización es indispensable para asegurar que se genere el valor esperado.</p>
         <a href="#" class="interest-btn">ME INTERESA</a>
       </div>
     </div>
+
   </div>
 </section>
 
@@ -182,27 +184,26 @@
 </section>
 
 <section class="contacto-section">
-  <!-- Parte superior con texto en fondo azul -->
-  <div class="contacto-header">
-    <div class="container">
+  <!-- Parte superior con texto -->
+  <div class="contacto-header" style="background-color: #0066cc; padding: 60px 0;">
+    <div class="contacto-container">
       <p class="contacto-intro">Conversemos sobre cómo podemos ayudar a tu organización en la <strong>optimización y transformación</strong> de tu negocio a través de la tecnología.</p>
     </div>
   </div>
 
-  <!-- Contenedor principal con imagen y formulario -->
+  <!-- Contenedor principal -->
   <div class="contacto-main">
-    <div class="container3">
+    <div class="contacto-wrapper"> <!-- ¡Nuevo nombre para evitar conflictos! -->
       <div class="contacto-grid">
-        <!-- Columna izquierda con imagen -->
+        <!-- Imagen (izquierda) -->
         <div class="contacto-img-col">
-          <img src="img\form1.png" alt="Equipo de tecnología trabajando" class="contacto-imagen">
+          <img src="img/form1.png" alt="Equipo de tecnología" class="contacto-imagen">
         </div>
 
-        <!-- Columna derecha con formulario -->
+        <!-- Formulario (derecha) -->
         <div class="contacto-form-col">
-          <form class="contacto-form" tyle="
-    padding-right: 70px;
-">
+          <form class="contacto-form">
+            <!-- Fila de nombre + apellido -->
             <div class="form-row">
               <div class="form-group">
                 <label for="nombre">NOMBRE *</label>
@@ -214,6 +215,7 @@
               </div>
             </div>
 
+            <!-- Campos restantes -->
             <div class="form-group">
               <label for="compania">COMPAÑÍA *</label>
               <input type="text" id="compania" required>
@@ -234,7 +236,8 @@
               <textarea id="mensaje" rows="4" required></textarea>
             </div>
 
-            <button type="submit" class="contacto-btn">CONTACTANOS</button>
+            <button type="submit" class="contacto-btn" style="margin-top: 20px;">CONTACTANOS</button>
+            
           </form>
         </div>
       </div>

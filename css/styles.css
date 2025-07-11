@@ -336,12 +336,12 @@ p {
 
 .service-image {
   width: 100%;
-  height: 250px;
+  height: 100%;
   overflow: hidden;
 }
 
 .service-image img {
-  width: 100%;
+  width: 50%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.3s ease;
@@ -363,13 +363,8 @@ p {
   padding-bottom: 10px;
 }
 
-.service-content h3::after {
-  content: '●●●●';
-  position: absolute;
-  bottom: 10px;
-  left: 60px;
-  color: #82f065;
-  font-size: 2rem;
+.green-dots  {
+color: #82f065;
 }
 
 .service-content p {
@@ -404,10 +399,7 @@ p {
     flex-direction: row-reverse;
   }
   
-  .service-image {
-    width: 50%;
-    height: auto;
-  }
+  
   
   .service-content {
     width: 50%;
@@ -669,35 +661,31 @@ p {
 }
 
 /* Responsive Design */
-@media (max-width: 1200px) {
-  .logistica-center-box h3 {
-    font-size: 2.5rem;
-  }
-  
-  .logistica-center-box span {
-    font-size: 2rem;
-  }
-}
-
 @media (max-width: 992px) {
   .logistica-grid {
     flex-direction: column;
-    gap: 40px;
+    gap: 20px; /* Reduce el espacio entre elementos */
   }
-  
+
   .logistica-img-left,
   .logistica-img-right {
-    max-width: 100%;
-    height: 300px;
+    width: 100%; /* Ocupa todo el ancho */
+    height: 250px; /* Altura fija (ajústala si es necesario) */
+    order: 1; /* Imagen superior */
   }
-  
+
   .logistica-center-box {
-    position: relative;
-    top: auto;
-    left: auto;
-    transform: none;
-    margin: -20px auto 30px;
-    width: 80%;
+    order: 2; /* Caja central en medio */
+    margin: 20px auto; /* Espaciado equilibrado */
+    width: 50%;
+  }
+
+  .logistica-buttons {
+    flex-direction: column; /* Apila los botones verticalmente */
+    gap: 15px !important; /* Espacio entre botones (¡sin 750px de locura!) */
+    align-items: center; /* Centra horizontalmente */
+    margin-top: 30px; /* Espacio arriba */
+    width: 100%; /* Ocupa todo el ancho */
   }
 }
 
@@ -725,25 +713,31 @@ p {
   }
   
   .logistica-btn {
-    width: 100%;
-    text-align: center;
+    width: 80%; /* Ancho consistente */
+    max-width: 300px; /* Evita que se estiren demasiado */
+    text-align: center; /* Texto centrado */
   }
 }
 
 
 /* Estilos para la sección de contacto */
 
-.container3 {
-    
-    max-width: 1500px;
-    margin: 0 auto;
-    padding: 0 20px;
+/* --- Contenedores principales --- */
+.contacto-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.contacto-wrapper {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 .contacto-header {
-  background-color: #0066cc;
-  padding: 60px 0;
   color: white;
+  text-align: center;
 }
 
 .contacto-intro {
@@ -751,22 +745,22 @@ p {
   line-height: 1.6;
   max-width: 800px;
   margin: 0 auto;
-  text-align: center;
 }
 
 .contacto-main {
   padding: 80px 0;
-  
 }
 
+/* --- Grid (Imagen + Formulario) --- */
 .contacto-grid {
   display: flex;
   gap: 50px;
   align-items: center;
 }
 
-.contacto-img-col {
-  flex: 1;
+.contacto-img-col, 
+.contacto-form-col {
+  flex: 1; /* Mitad y mitad */
 }
 
 .contacto-imagen {
@@ -776,23 +770,22 @@ p {
   box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
-.contacto-form-col {
-  flex: 1;
-}
-
+/* --- Formulario --- */
 .contacto-form {
   background: #f8f9fa;
   padding: 40px;
   border-radius: 10px;
+  width: 100%;
+  box-sizing: border-box; /* ¡Obligatorio! */
 }
 
 .form-row {
   display: flex;
-  gap: 50px;
+  gap: 20px; /* Espacio reducido para mejor alineación */
+  margin-bottom: 20px;
 }
 
 .form-group {
-  margin-bottom: 25px;
   flex: 1;
 }
 
@@ -825,28 +818,41 @@ p {
   font-size: 1.1rem;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s;
   width: 100%;
+  transition: background-color 0.3s;
 }
 
 .contacto-btn:hover {
   background-color: #004d99;
 }
 
-/* Responsive */
+.form-group input,
+.form-group textarea {
+  width: calc(100% - 30px); /* ¡Ancho exacto considerando padding! */
+  padding: 12px 15px; /* 15px izquierda/derecha */
+  margin: 0; /* Elimina márgenes raros */
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  box-sizing: border-box; /* ¡MAGIA! Incluye padding en el ancho total */
+}
+
+
+/* --- Responsive --- */
 @media (max-width: 992px) {
   .contacto-grid {
-    flex-direction: column;
+    flex-direction: column; /* Apila imagen arriba, formulario abajo */
+    gap: 30px;
   }
   
-  .contacto-img-col,
-  .contacto-form-col {
-    width: 100%;
+  .contacto-form {
+    padding: 30px;
   }
   
   .form-row {
-    flex-direction: column;
-    gap: 40px;
+    flex-direction: column; /* Apila nombre y apellido */
+    gap: 15px;
+    margin-bottom: 15px;
   }
 }
 
@@ -860,9 +866,21 @@ p {
   }
   
   .contacto-form {
-    padding: 25px;
+    padding: 20px;
+  }
+  
+  .contacto-btn {
+    padding: 12px 20px;
+  }
+  @media (max-width: 576px) {
+  .form-group input,
+  .form-group textarea {
+    width: 100%; /* Ocupa todo el ancho disponible */
+    padding: 10px 12px; /* Padding más ajustado */
   }
 }
+}
+
 
 /* Asegúrate que el canvas no cause overflow */
 #particles {
