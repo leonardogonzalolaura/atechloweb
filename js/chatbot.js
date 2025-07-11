@@ -1,4 +1,37 @@
+
 document.addEventListener('DOMContentLoaded', function() {
+
+  if (!window.CONFIG || typeof window.CONFIG.DEEPSEEK_API_KEY !== 'string') {
+    showConfigError();
+    console.error('Configuración incorrecta:', window.CONFIG);
+    return; // Detiene la ejecución
+  }
+
+  function showConfigError() {
+  const errorHtml = `
+    <div style="
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: #ffebee;
+      padding: 20px;
+      border-bottom: 2px solid #f44336;
+      z-index: 9999;
+    ">
+      <h3 style="color: #d32f2f;">⚠️ Error de Configuración</h3>
+      <p>Crea un archivo <strong>/config/config.js</strong> con:</p>
+      <pre style="background: #f5f5f5; padding: 10px; border-radius: 4px;">
+const CONFIG = {
+  DEEPSEEK_API_KEY: 'tu_api_key_aqui',
+  API_ENDPOINT: 'https://api.deepseek.com/v1/chat/completions',
+  MAX_TOKENS: 150
+};</pre>
+    </div>
+  `;
+  document.body.insertAdjacentHTML('afterbegin', errorHtml);
+}
+    
   // Elementos del DOM
   const chatbotContainer = document.getElementById('aiChatbot');
   const toggleButton = document.getElementById('toggleChatbot');
@@ -236,7 +269,7 @@ document.addEventListener('DOMContentLoaded', function() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer sk-aff27af88a5f44fda2a4adb886ceab5e' 
+          'Authorization': `Bearer ${window.CONFIG.DEEPSEEK_API_KEY}`
         },
         body: JSON.stringify({
           model: "deepseek-chat",

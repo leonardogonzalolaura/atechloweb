@@ -3,3 +3,10 @@
 *.tmp
 *@github.com
 .ssh/config
+.env
+/config/config.js
+*.secret.*
+secrets/
+.env
+.env.local
+.env*.local
