@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <script src="/config/config.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>atechlo.com | Próximamente dev</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/chat.css">
+    
 </head>
 <body>
+  
     <!-- Barra de navegación responsive -->
     <nav class="navbar">
         <div class="logo">
@@ -260,5 +264,49 @@
     </div>
 
     <script src="js/script.js"></script>
+
+    <!-- Chatbot IA Flotante -->
+<div class="ai-chatbot-container" id="aiChatbot">
+  <div class="chatbot-header">
+    <div class="chatbot-avatar">
+      <img src="img/ai-avatar.png" alt="Asistente IA">
+    </div>
+    <h3>Asistente Digital ATECHLO</h3>
+    <button class="minimize-chat">−</button>
+    <button class="close-chat">×</button>
+  </div>
+  
+  <div class="chatbot-messages" id="chatMessages">
+    <!-- Mensajes aparecerán aquí -->
+    <div class="chatbot-welcome">
+      <p>¡Hola! Soy Aura, tu asistente digital de ATECHLO. ¿En qué puedo ayudarte hoy?</p>
+      <div class="quick-questions">
+        <button class="quick-btn" data-question="¿Qué servicios ofrecen?">¿Qué servicios ofrecen?</button>
+        <button class="quick-btn" data-question="¿Cómo pueden ayudarme con logística?">¿Cómo pueden ayudarme con logística?</button>
+        <button class="quick-btn" data-question="¿Tienen consultoría digital?">¿Tienen consultoría digital?</button>
+      </div>
+    </div>
+  </div>
+  
+  <div class="chatbot-input">
+    <textarea id="userMessage" placeholder="Escribe tu pregunta..."></textarea>
+    <button id="sendMessage">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M22 2L11 13M22 2L15 22L11 13M11 13L2 9" stroke="#82f065" stroke-width="2"/>
+      </svg>
+    </button>
+  </div>
+  
+  <div class="chatbot-footer">
+    <span>IA generativa · Respuestas en tiempo real</span>
+  </div>
+</div>
+
+<!-- Botón flotante para abrir el chat -->
+<button class="chatbot-toggle" id="toggleChatbot">
+  <img src="img/ai-icon.png" alt="Chat IA">
+  <span>Asistente Digital</span>
+</button>
+<script src="js/chatbot.js"></script>
 </body>
 </html>
