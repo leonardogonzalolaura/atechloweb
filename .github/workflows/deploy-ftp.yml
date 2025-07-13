@@ -18,7 +18,7 @@ jobs:
         server: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: ./Home/atechloweb/
+        local-dir: ./home/atechloweb/
         server-dir: ${{ secrets.FTP_DIRECTORY }}  
         exclude: |               
           .git/
