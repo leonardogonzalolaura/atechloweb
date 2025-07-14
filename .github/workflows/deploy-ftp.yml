@@ -28,7 +28,7 @@ jobs:
         password: ${{ secrets.FTP_PASSWORD }}
         local-dir: './repo/'
         server-dir: ${{ secrets.FTP_DIRECTORY }}  
-        exclude: |               
+        exclude: |
           .git/
           .github/
           README.md
