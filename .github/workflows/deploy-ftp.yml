@@ -9,6 +9,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Check files to deploy
+      run: |
+        echo "Contenido del directorio local-dir (./):"
+        ls -la
+        echo "¿Existe .git/?"
+        ls -la .git/
     - name: Checkout code
       uses: actions/checkout@v4
 
@@ -24,3 +30,4 @@ jobs:
           .git/
           .github/
           README.md
+          .ftp-deploy-sync-state.json
