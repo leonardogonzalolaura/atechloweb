@@ -29,7 +29,9 @@ jobs:
         local-dir: './repo/'
         server-dir: ${{ secrets.FTP_DIRECTORY }}  
         exclude: |
-          .git/
-          .github/
-          README.md
-          .ftp-deploy-sync-state.json
+          **/.git/**
+          **/.github/**
+          **/README.md
+          **/.ftp-deploy-sync-state.json
+      env:
+        FTP_DEPLOY_DEBUG: "true" 
