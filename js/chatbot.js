@@ -1,37 +1,6 @@
 
 document.addEventListener('DOMContentLoaded', function() {
-
-  if (!window.CONFIG || typeof window.CONFIG.DEEPSEEK_API_KEY !== 'string') {
-    //showConfigError();
-    console.error('Configuración incorrecta:', window.CONFIG);
-    return; // Detiene la ejecución
-  }
-
-  function showConfigError() {
-  const errorHtml = `
-    <div style="
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      background: #ffebee;
-      padding: 20px;
-      border-bottom: 2px solid #f44336;
-      z-index: 9999;
-    ">
-      <h3 style="color: #d32f2f;">⚠️ Error de Configuración</h3>
-      <p>Crea un archivo <strong>/config/config.js</strong> con:</p>
-      <pre style="background: #f5f5f5; padding: 10px; border-radius: 4px;">
-const CONFIG = {
-  DEEPSEEK_API_KEY: 'tu_api_key_aqui',
-  API_ENDPOINT: 'https://api.deepseek.com/v1/chat/completions',
-  MAX_TOKENS: 150
-};</pre>
-    </div>
-  `;
-  document.body.insertAdjacentHTML('afterbegin', errorHtml);
-}
-    
+ 
   // Elementos del DOM
   const chatbotContainer = document.getElementById('aiChatbot');
   const toggleButton = document.getElementById('toggleChatbot');
@@ -46,12 +15,12 @@ const CONFIG = {
   let isChatOpen = false;
   let isTyping = false;
   let lastRequestTime = 0;
-  const REQUEST_DELAY = 1500; // 1.5 segundos entre solicitudes
+  const REQUEST_DELAY = 1000; 
 
   // Control de tokens
   let tokenCount = parseInt(localStorage.getItem('tokenUsage')) || 0;
-  const BUDGET = 500000; // Tokens equivalentes a $5 (ajusta según precio actual)
-  const MAX_TOKENS_RESPONSE = 80; // Límite de tokens por respuesta
+  const BUDGET = 500000; 
+  const MAX_TOKENS_RESPONSE = 100; 
 
   // Cache de respuestas
   const cache = JSON.parse(localStorage.getItem('deepseekCache')) || {};
@@ -183,7 +152,7 @@ const CONFIG = {
       .replace(/^(hola|buenos|hi)\s*/i, '')
       .replace(/\s+por favor\s*/gi, ' ')
       .trim()
-      .substring(0, 100); // Limita a 100 caracteres
+      .substring(0, 150); 
   }
 
   // Buscar en caché
@@ -265,37 +234,14 @@ const CONFIG = {
 
     // 6. Llamar a la API solo si es necesario
     try {
-      const response = await fetch('https://api.deepseek.com/v1/chat/completions', {
+      const response = await fetch('https://atechlo.com/api/chat', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${window.CONFIG.DEEPSEEK_API_KEY}`
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          model: "deepseek-chat",
           messages: [
             {
-              role: "system",
-               content: "Eres Aura, asistente digital de ATECHLO (servicios TI y logística).\n" +
-                    "**Personalidad:**\n" +
-                    "- Profesional pero amigable\n" +
-                    "- Técnica pero clara\n" +
-                    "- Proactiva en sugerir soluciones\n\n" +
-                    "- Trata de usar emojis de forma amigable\n\n" +
-                    "**Reglas:**\n" +
-                    "1. Responde SOLO sobre servicios de ATECHLO\n" +
-                    "2. Máximo 80 palabras por respuesta\n" +
-                    "3. Usa formato claro:\n" +
-                    "   • Viñetas para opciones\n" +
-                    "   → Para pasos siguientes\n" +
-                    "4. Para consultas personales: 'Para eso necesitaré transferirte a un colega humano'\n\n" +
-                    "**Ejemplos de estilo:**\n" +
-                    "- 'Para desarrollo web, ofrecemos: • Sitios a medida • eCommerce • Apps móviles'\n" +
-                    "- 'En logística podemos: → Cotizar flota → Diseñar ruta optimizada'" 
-                    
-            },
-            {
-              role: "user",
               content: optimizedQuery
             }
           ],
@@ -305,9 +251,11 @@ const CONFIG = {
         })
       });
 
+      console.log(response)
       if (!response.ok) throw new Error(`HTTP error: ${response.status}`);
 
       const data = await response.json();
+
       const aiResponse = data.choices[0].message.content;
 
       // 7. Actualizar contador (estimación: 1 token ≈ 1 palabra en español)
