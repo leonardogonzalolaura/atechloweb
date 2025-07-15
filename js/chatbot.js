@@ -89,10 +89,13 @@ document.addEventListener('DOMContentLoaded', function() {
   function addMessage(text, sender) {
     const messageDiv = document.createElement('div');
     messageDiv.classList.add('message', `${sender}-message`);
-    messageDiv.innerHTML = `<p>${text}</p>`;
+    const paragraph = document.createElement('p');
+    paragraph.style.whiteSpace = 'pre-wrap'; // Esto preserva los saltos de línea
+    paragraph.textContent = text;
+    messageDiv.appendChild(paragraph);
     chatMessages.appendChild(messageDiv);
     chatMessages.scrollTop = chatMessages.scrollHeight;
-  }
+}
 
   // Mostrar indicador de "escribiendo"
   function showTypingIndicator() {
@@ -251,7 +254,6 @@ document.addEventListener('DOMContentLoaded', function() {
       if (!response.ok) throw new Error(`HTTP error: ${response.status}`);
 
       const data = await response.json();
-      console.log(data)
       const aiResponse = data.response;
 
       // 7. Actualizar contador (estimación: 1 token ≈ 1 palabra en español)
