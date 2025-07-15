@@ -194,7 +194,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.4); /* Transparencia ajustada */
+    background: rgba(0, 0, 0, 0.3); /* Transparencia ajustada */
 }
 
 .banner-content {
@@ -377,7 +377,7 @@ p {
 }
 
 .service-content h3 {
-  font-size: 1.3rem;
+  font-size: 2rem;
   color: #0066cc;
   margin: 0;
   text-align: center; /* Texto centrado */
