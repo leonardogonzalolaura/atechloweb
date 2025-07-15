@@ -177,7 +177,7 @@ document.addEventListener('DOMContentLoaded', function() {
     localStorage.setItem('deepseekCache', JSON.stringify(cache));
   }
 
-  // Verificar presupuesto
+  
   function checkBudget() {
     if (tokenCount >= BUDGET) {
       return {
@@ -240,11 +240,7 @@ document.addEventListener('DOMContentLoaded', function() {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          messages: [
-            {
-              content: optimizedQuery
-            }
-          ],
+          message:optimizedQuery,
           temperature: 0.5,
           max_tokens: MAX_TOKENS_RESPONSE,
           top_p: 0.9
