@@ -247,12 +247,12 @@ document.addEventListener('DOMContentLoaded', function() {
         })
       });
 
-      console.log(response)
+      
       if (!response.ok) throw new Error(`HTTP error: ${response.status}`);
 
       const data = await response.json();
-
-      const aiResponse = data.choices[0].message.content;
+      console.log(data)
+      const aiResponse = data.response;
 
       // 7. Actualizar contador (estimación: 1 token ≈ 1 palabra en español)
       const tokensUsed = aiResponse.split(/\s+/).length + optimizedQuery.split(/\s+/).length;
