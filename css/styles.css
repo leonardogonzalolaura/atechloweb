@@ -1,9 +1,14 @@
 /* --- Estilos de la Navbar --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Incluye padding/border en el ancho */
+}
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 30px;
+    padding: 15px 20px;
     background-color: #226bb2;
     color: white;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
@@ -17,7 +22,7 @@
 }
 
 .logo img {
-    height: 80px;
+    height: 50px;
 }
 
 .nav-links {
@@ -38,7 +43,7 @@
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 
 .nav-links a:hover {
@@ -88,6 +93,92 @@
     display: block;
 }
 
+/* Menú Hamburguesa */
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    z-index: 1001;
+}
+
+.menu-toggle span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: white;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+/* Estilos para el menú activo */
+.menu-toggle.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+/* --- Estilos Responsive --- */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 15px 20px;
+    }
+    
+    .menu-toggle {
+        display: flex;
+    }
+    
+    .nav-links {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 80%;
+        height: calc(100vh - 70px);
+        background-color: #226bb2;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        transition: all 0.5s ease;
+    }
+    
+    .nav-links.active {
+        left: 0;
+    }
+    
+    .nav-links li {
+        margin: 15px 0;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .nav-links a {
+        padding: 10px;
+        display: block;
+    }
+    
+    .dropdown-content {
+        position: static;
+        width: 80%;
+        margin: 10px auto 0;
+        display: none;
+    }
+    
+    .dropdown:hover .dropdown-content {
+        display: none;
+    }
+    
+    .dropdown.active .dropdown-content {
+        display: block;
+    }
+}
 /* Menú Hamburguesa */
 .menu-toggle {
     display: none;
@@ -226,6 +317,7 @@
     font-weight: bold;
     font-size: 1.2rem;
     transition: all 0.3s;
+    border-radius: 4px;
     /
 }
 
@@ -377,7 +469,7 @@ p {
 }
 
 .service-content h3 {
-  font-size: 2rem;
+  font-size: 1.6rem;
   color: #0066cc;
   margin: 0;
   text-align: center; /* Texto centrado */
@@ -509,7 +601,7 @@ p {
 
 .section-title {
   text-align: center;
-  font-size: 3rem;
+  font-size: 2rem;
   margin-bottom: 60px;
   color: #ffffff;
   position: relative;
@@ -558,7 +650,7 @@ p {
 }
 
 .about-card h3 {
-  font-size: 2rem;
+  font-size: 1.6rem;
   margin-bottom: 20px;
   color: #ffffff;
 }
@@ -566,6 +658,7 @@ p {
 .about-card p {
   line-height: 1.6;
   color: #ffffff;
+  font-size: 1rem;
 }
 
 /* Estilos para la lista de valores */
@@ -586,7 +679,7 @@ p {
 .values-list li::before {
   content: '•';
   color: #ffffff;
-  font-size: 1.8rem;
+  font-size: 1rem;
   position: center;
   left: 0;
   top: -5px;
@@ -634,7 +727,7 @@ p {
 /* Titulo principal */
 .logistica-title {
   text-align: center;
-  font-size: 2.5rem;
+  font-size: 2rem;
   margin-bottom: 60px;
   color: #333;
   position: relative;
@@ -726,7 +819,7 @@ p {
   background: #0066cc;
   color: white;
   text-decoration: none;
-  border-radius: 50px;
+  border-radius: 4px;
   font-size: 1.1rem;
   font-weight: bold;
   transition: all 0.3s;
@@ -820,7 +913,7 @@ p {
 }
 
 .contacto-intro {
-  font-size: 1.5rem;
+  font-size: 2rem;
   line-height: 1.6;
   max-width: 800px;
   margin: 0 auto;
