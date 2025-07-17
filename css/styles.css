@@ -588,7 +588,7 @@ p {
 
 /* Estilos generales */
 .about-section {
-  padding: 80px 0;
+  padding: 40px 0;
   background-color: #004d99;
 }
 
@@ -627,7 +627,7 @@ p {
   flex: 1;
   background: #226bb2;
   border-radius: 8px;
-  padding: 40px 30px;
+  padding: 25px 20px;
 
   transition: transform 0.3s ease;
   text-align: center;
@@ -638,9 +638,10 @@ p {
 }
 
 .card-image {
-  width: 100px;
-  height: 100px;
-  margin: 0 auto 25px;
+  margin: 0 auto 15px; /* Reducido de 25px */
+   width: 70px;
+  height: 70px;
+ 
 }
 
 .card-image img {
@@ -704,17 +705,17 @@ p {
 
 @media (max-width: 768px) {
   .about-section {
-    padding: 60px 0;
+    padding: 30px 0;
   }
   
   .card-image {
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
   }
 }
 /* Estructura base */
 .logistica-section {
-  padding: 80px 0;
+  padding: 40px 0;
   
 }
 
@@ -743,17 +744,17 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 150px;
+  gap: 60px;
   position: relative;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
 }
 
 /* Estilos de imágenes */
 .logistica-img-left,
 .logistica-img-right {
   flex: 1;
-  max-width: 1000px;
-  height: 600px;
+  max-width: 600px;
+  height: 400px;
   border-radius: 15px;
   overflow: hidden;
   box-shadow: 0 8px 25px rgba(0,0,0,0.1);
@@ -782,7 +783,7 @@ p {
   transform: translate(-50%, -50%);
   z-index: 2;
   background: white;
-  padding: 20px 50px;
+  padding: 15px 30px;
   border-radius: 8px;
   box-shadow: 0 0 0 10px rgba(255,255,255,0.7), 
               0 5px 30px rgba(0,0,0,0.2);
@@ -809,7 +810,7 @@ p {
 .logistica-buttons {
   display: flex;
   justify-content: center;
-  gap: 750px;
+  gap: 350px;
   margin-top: 20px;
 }
 
@@ -842,7 +843,7 @@ p {
   .logistica-img-left,
   .logistica-img-right {
     width: 100%; /* Ocupa todo el ancho */
-    height: 250px; /* Altura fija (ajústala si es necesario) */
+    height: 200px; /* Altura fija (ajústala si es necesario) */
     order: 1; /* Imagen superior */
   }
 
@@ -862,6 +863,11 @@ p {
 }
 
 @media (max-width: 576px) {
+  .logistica-img-left,
+  .logistica-img-right {
+    height: 150px; /* Más bajo en móviles */
+  }
+
   .logistica-title {
     font-size: 2rem;
   }
@@ -913,7 +919,7 @@ p {
 }
 
 .contacto-intro {
-  font-size: 2rem;
+  font-size: 1.5rem;
   line-height: 1.6;
   max-width: 800px;
   margin: 0 auto;
@@ -1080,3 +1086,83 @@ h1 {
     font-size: 2.5rem;
 }
 
+/* ---- FOOTER PRINCIPAL ---- */
+.custom-footer {
+  background-color: #333333; /* Gris oscuro */
+  color: white;
+  height: 50vh; /* 50% del viewport */
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-around;
+  padding: 100px 60px;
+  flex-grow: 1; /* Ocupa todo el espacio menos el copyright */
+}
+
+.footer-column {
+  flex: 1;
+  max-width: 30%;
+  padding: 0 15px;
+}
+
+.footer-column h4 {
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+  color: #ffffff;
+  border-bottom: 2px solid /* Línea decorativa */
+  padding-bottom: 10px;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-column li {
+  
+  margin-bottom: 10px;
+  font-size: 0.8rem;
+}
+
+/* ---- COPYRIGHT (MÁS OSCURO) ---- */
+.footer-copyright {
+  background-color: #222222; /* Gris más oscuro */
+  padding: 20px;
+  text-align: center;
+}
+
+.footer-copyright p {
+    margin: 0;
+  font-size: 0.8rem; /* Más pequeño que el resto */
+  color: #aaaaaa;
+}
+
+.footer-column li:hover {
+  color: #0066cc;
+  cursor: pointer;
+  transform: translateX(5px);
+  transition: all 0.3s ease;
+}
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    padding: 30px 20px;
+  }
+  
+  .footer-column {
+    max-width: 100%;
+    margin-bottom: 30px;
+  }
+  
+  .custom-footer {
+    height: auto; /* Altura automática en móviles */
+    min-height: 50vh;
+  }
+}
