@@ -405,6 +405,7 @@ p {
 /* Estilos generales para la sección */
 
 
+/* --- ESTRUCTURA BASE (igual que antes) --- */
 .services-section {
   padding: 60px 20px;
   max-width: 1400px;
@@ -413,7 +414,7 @@ p {
 
 .section-header h2 {
   text-align: center;
-  font-size: clamp(1.5rem, 4vw, 2rem); /* Tamaño responsivo */
+  font-size: clamp(1.5rem, 4vw, 2rem);
   margin-bottom: 40px;
   color: #333;
 }
@@ -423,14 +424,12 @@ p {
   font-weight: bold;
 }
 
-/* Contenedor de servicios */
 .services-container {
   display: flex;
   flex-direction: column;
-  gap: 40px; /* Reducido para móvil */
+  gap: 40px;
 }
 
-/* Tarjeta de servicio */
 .service-card {
   display: flex;
   flex-direction: column;
@@ -442,149 +441,138 @@ p {
 
 .service-image {
   width: 100%;
-  aspect-ratio: 16/9; /* Proporción constante */
+  aspect-ratio: 16/9;
 }
 
 .service-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease;
 }
 
-.service-card:hover .service-image img {
-  transform: scale(1.05);
-}
-
+/* --- LADO DERECHO (TEXTO + HOVER) --- */
 .service-content {
+  position: relative; /* Necesario para el hover */
   padding: 25px;
+  transition: all 0.5s;
 }
 
-.service-title-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* ¡Centrado horizontal! */
-  gap: 8px;
-  margin-bottom: 15px;
+/* Imagen de fondo para hover */
+.hover-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.5s;
+  z-index: 1;
+}
+
+/* Overlay para legibilidad */
+.hover-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  transition: opacity 0.5s;
+  z-index: 2;
+}
+
+/* Contenido (siempre visible) */
+.content-wrapper {
+  position: relative; /* Para que esté sobre el hover */
+  z-index: 3;
 }
 
 .service-content h3 {
   font-size: 1.6rem;
   color: #0066cc;
-  margin: 0;
-  text-align: center; /* Texto centrado */
-}
-
-.green-dots-container {
-  display: flex;
-  justify-content: flex-start; /* Alinea a la izquierda */
+  margin-bottom: 10px;
+  transition: color 0.5s;
 }
 
 .green-dots {
   color: #82f065;
   font-size: 1.2rem;
   letter-spacing: 3px;
-  text-align: center; /* Puntos centrados */
-  display: block; /* Asegura que ocupe toda la línea */
+  margin-bottom: 15px;
+  display: block;
 }
 
 .service-content p {
   margin-bottom: 20px;
   color: #555;
   line-height: 1.6;
-  font-size: 1rem;
+  transition: color 0.5s;
 }
 
 .interest-btn {
-  margin-top: 20px; /* Espacio arriba */
-  width: auto; /* Ancho según contenido (o usa 100% si prefieres) */
-  padding: 12px 40px; /* Ajuste de tamaño */
-
   display: inline-block;
-  
+  padding: 12px 40px;
   background-color: #0066cc;
   color: white;
   text-decoration: none;
   border-radius: 4px;
   font-weight: bold;
   transition: all 0.3s;
-  
 }
 
-.interest-btn:hover {
-  background-color: #004d99;
-  transform: translateY(-3px);
+/* --- EFECTO HOVER --- */
+.service-content:hover .hover-bg,
+.service-content:hover .hover-overlay {
+  opacity: 1; /* Muestra fondo y overlay */
 }
 
-/* === VERSIÓN ESCRITORIO === */
+.service-content:hover h3,
+.service-content:hover p {
+  color: white; /* Texto blanco en hover */
+}
+
+.service-content:hover .interest-btn {
+  background-color: white;
+  color: #0066cc; /* Botón invertido */
+}
+
+/* --- ESCRITORIO (2 columnas) --- */
 @media (min-width: 992px) {
   .service-card {
     flex-direction: row;
-    min-height: 300px; /* Altura flexible */
+    min-height: 300px;
   }
-  
+
   .service-card:nth-child(even) {
     flex-direction: row-reverse;
   }
-  
+
   .service-image {
     width: 50%;
-    aspect-ratio: unset; /* Anula la proporción fija */
+    aspect-ratio: unset;
     height: auto;
   }
-  
+
   .service-content {
-    
-  flex-direction: column;
-  align-items: center; /* ¡Centrado horizontal! */
-  text-align: center; /* Texto centrado (por si acaso) */
     width: 50%;
     padding: 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
   }
 }
 
-/* === VERSIÓN TABLET === */
-@media (max-width: 991px) and (min-width: 768px) {
-  .service-content {
-    padding: 30px;
-  }
-}
-
-/* === VERSIÓN MÓVIL === */
+/* --- MÓVIL --- */
 @media (max-width: 767px) {
-  .services-container {
-    gap: 30px;
-  }
-  
   .service-content {
     padding: 20px;
   }
   
-  .service-title-container {
-    align-items: center !important; /* ¡Centrado forzado! */
-    flex-direction: column;
-      gap: 10px;
-  }
-
-  .service-content h3,
-  .green-dots {
-    text-align: center !important; /* Doble seguridad */
-  }
-  
-  .green-dots {
-    margin: 0 auto; /* ¡Centrado mágico! */
-    display: block; /* Asegura que ocupe su propia línea */
-  }
-  
   .interest-btn {
-    width: 100%; /* Botón ancho en móvil */
-    max-width: 200px; /* Pero no más ancho que esto */
+    width: 100%;
+    max-width: 200px;
+    text-align: center;
   }
 }
-
 
 /* Estilos generales */
 .about-section {
