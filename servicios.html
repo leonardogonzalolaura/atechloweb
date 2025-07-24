@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <title>atechlo.com | Próximamente dev</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/chat.css">
+    
+</head>
+<body>
+  
+    <!-- Barra de navegación responsive -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="img\logo1.png" alt="Logo">
+        </div>
+        
+        <!-- Botón para móviles -->
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    <!-- Menú principal -->
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#">Inicio</a></li>
+            <li class="dropdown">
+    <a href="#">Servicios TI 
+        <svg class="dropdown-icon" width="12" height="12" viewBox="0 0 24 24" fill="none">
+            <path d="M7 10L12 15L17 10" stroke="#82f065" stroke-width="2"/> <!-- Flecha blanca -->
+        </svg>
+    </a>
+    <div class="dropdown-content">
+        <a href="#">Desarrollo Web</a>
+        <a href="#">Redes</a>
+        <a href="#">Ciberseguridad</a>
+    </div>
+</li>
+            <li><a href="#">Soluciones Logísticas</a></li>
+            <li><a href="#">Portafolio</a></li>
+            <li><a href="#">Contacto</a></li>
+        </ul>
+    </nav>
+
+     <!-- Efecto partículas (opcional) -->
+    <canvas id="particles"></canvas>
+
+
+     <!-- Carrusel de Banners -->
+<section class="carousel-section">
+  <div class="carousel-container">
+    <!-- Banner 1 -->
+    <div class="carousel-slide active">
+      <img src="img\servicio 4.4.jpg" alt="Consultoría Digital" class="carousel-img">
+      <div class="carousel-overlay"></div>
+      <div class="carousel-content">
+        <h2>Transforma tu Negocio</h2>
+        <p>Soluciones digitales que generan resultados reales</p>
+        <a href="#servicios" class="carousel-btn">VER SERVICIOS</a>
+      </div>
+    </div>
+    
+    <!-- Banner 2 -->
+    <div class="carousel-slide">
+      <img src="img\SERVICIO 2.2.jpg" alt="Desarrollo de Software" class="carousel-img">
+      <div class="carousel-overlay"></div>
+      <div class="carousel-content">
+        <h2>Software a Tu Medida</h2>
+        <p>Desarrollamos lo que necesitas, sin complicaciones</p>
+        <a href="#servicios" class="carousel-btn">VER SERVICIOS</a>
+      </div>
+    </div>
+    
+    <!-- Banner 3 -->
+    <div class="carousel-slide">
+      <img src="img\SERVICIO 3.3.jpg" alt="Infraestructura IT" class="carousel-img">
+      <div class="carousel-overlay"></div>
+      <div class="carousel-content">
+        <h2>Infraestructura Robustas</h2>
+        <p>Redes seguras y escalables para tu crecimiento</p>
+        <a href="#servicios" class="carousel-btn">VER SERVICIOS</a>
+      </div>
+    </div>
+    
+    <!-- Controles -->
+    <button class="carousel-control prev">❮</button>
+    <button class="carousel-control next">❯</button>
+    
+    <!-- Indicadores -->
+    <div class="carousel-indicators">
+      <span class="indicator active"></span>
+      <span class="indicator"></span>
+      <span class="indicator"></span>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="services-section">
+  <div class="section-header">
+    <h2>Listo para innovar? <span>explora NUESTROS SERVICIOS</span></h2>
+  </div>
+
+  <div class="services-container">
+    <!-- Card 1 -->
+    <div class="service-card">
+      <!-- Lado izquierdo (imagen) -->
+      <div class="service-image">
+        <img src="img\servicio1.png" alt="Consultoría Digital">
+      </div>
+      
+      <!-- Lado derecho (texto + hover) -->
+      <div class="service-content">
+        <!-- Imagen de fondo para hover (oculta por defecto) -->
+        <img src="img\servicio 1.2.jpg" alt="Fondo hover" class="hover-bg">
+        <div class="hover-overlay"></div> <!-- Overlay oscuro -->
+        
+        <!-- Contenido visible siempre -->
+        <div class="content-wrapper">
+          <h3>CONSULTORIA DIGITAL</h3>
+          <div class="green-dots">●●●●</div>
+          <p>Ofrecemos soluciones estratégicas para transformar tu negocio. Analizamos tus desafíos, diseñamos estrategias personalizadas e implementamos herramientas tecnológicas que optimizan procesos, aumentan tu visibilidad y generan resultados tangibles. Desde la digitalización de operaciones hasta la maximización de tu presencia online, te acompañamos en cada paso.
+</p>
+          <a href="#" class="interest-btn">ME INTERESA</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2 (misma estructura) -->
+    <div class="service-card">
+      <div class="service-image">
+        <img src="img/servicio2.png" alt="Desarrollo de Software">
+      </div>
+      <div class="service-content">
+        <img src="img\SERVICIO 2.2.jpg" alt="Fondo hover" class="hover-bg">
+        <div class="hover-overlay"></div>
+        <div class="content-wrapper">
+          <h3>DESARROLLO DE SOFTWARE</h3>
+          <div class="green-dots">●●●●</div>
+          <p>Creamos software a tu medida. Estamos contigo desde el concepto inicial hasta la entrega final, priorizando funcionalidad, escalabilidad y mantenibilidad. Ideal para negocios que buscan soluciones tecnológicas sin excesos ni complicaciones técnicas innecesarias.</p>
+          <a href="#" class="interest-btn">ME INTERESA</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3 (misma estructura) -->
+    <div class="service-card">
+      <div class="service-image">
+        <img src="img/servicio3.png" alt="Infraestructura IT">
+      </div>
+      <div class="service-content">
+        <img src="img\SERVICIO 3.3.jpg" alt="Fondo hover" class="hover-bg">
+        <div class="hover-overlay"></div>
+        <div class="content-wrapper">
+          <h3>INFRAESTRUCTURA IT</h3>
+          <div class="green-dots">●●●●</div>
+          <p>Diseñamos e implementamos infraestructuras IT adaptadas a tu operativa real. Desde servidores eficientes hasta redes seguras, priorizamos estabilidad y escalabilidad sin sobre-ingenierías. Ideal para empresas que buscan dejar atrás los parches temporales y migrar a sistemas que realmente soporten su crecimiento.</p>
+          <a href="#" class="interest-btn">ME INTERESA</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+ <footer class="custom-footer">
+  <div class="footer-content">
+    <!-- Columna 1 -->
+    <div class="footer-column">
+      <h4>SERVICIOS</h4>
+      <ul>
+        <li>Consultoria Digital</li>
+        <li>Desarrollo de Software</li>
+        <li>Infraestructura IT</li>
+      </ul>
+    </div>
+    
+    <!-- Columna 2 -->
+    <div class="footer-column">
+      <h4>Logistica</h4>
+      <ul>
+        <li>Alquiler de Autos</li>
+        <li>Gestion de Flotas</li>
+        <li>Consumo Masivo y Retail</li>
+      </ul>
+    </div>
+    
+    <!-- Columna 3 -->
+    <div class="footer-column">
+      <h4>SOBRE NOSOTROS</h4>
+      <ul>
+        <li>Nuestra Mision</li>
+        <li>Nuestro Proposito</li>
+        <li>nuestros Valores</li>
+      </ul>
+    </div>
+  </div>
+  
+  <!-- Derechos reservados (más oscuro) -->
+  <div class="footer-copyright">
+    <p>Copyright © 2025 ATECHLO. Todos los derechos reservados.</p>
+  </div>
+</footer>  
+
+    
+
+   
+
+    <script src="js/script.js"></script>
+
+    <!-- Chatbot IA Flotante -->
+<div class="ai-chatbot-container" id="aiChatbot">
+  <div class="chatbot-header">
+    <div class="chatbot-avatar">
+      <img src="img/logo-simple.png" alt="Asistente IA">
+    </div>
+    <h3>Aura</h3>
+    <button class="minimize-chat">−</button>
+    <button class="close-chat">×</button>
+  </div>
+  
+  <div class="chatbot-messages" id="chatMessages">
+    <!-- Mensajes aparecerán aquí -->
+    <div class="chatbot-welcome">
+      <p>¡Hola! Soy Aura, tu asistente digital de ATECHLO. ¿En qué puedo ayudarte hoy?</p>
+      <div class="quick-questions">
+        <button class="quick-btn" data-question="¿Qué servicios ofrecen?">¿Qué servicios ofrecen?</button>
+        <button class="quick-btn" data-question="¿Cómo pueden ayudarme con logística?">¿Cómo pueden ayudarme con logística?</button>
+        <button class="quick-btn" data-question="¿Tienen consultoría digital?">¿Tienen consultoría digital?</button>
+      </div>
+    </div>
+  </div>
+  
+  <div class="chatbot-input">
+    <textarea id="userMessage" placeholder="Escribe tu pregunta..."></textarea>
+    <button id="sendMessage">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M22 2L11 13M22 2L15 22L11 13M11 13L2 9" stroke="#82f065" stroke-width="2"/>
+      </svg>
+    </button>
+  </div>
+  
+  <div class="chatbot-footer">
+    <span>IA generativa · Respuestas en tiempo real</span>
+  </div>
+</div>
+
+<!-- Botón flotante para abrir el chat -->
+<button class="chatbot-toggle" id="toggleChatbot">
+  <img src="img/logo-simple.png" alt="Chat IA">
+  <span>Asistente Digital</span>
+</button>
+<script src="js/chatbot.js"></script>
+
+<script src="js\carrusel.js"></script>
+
+</body>
+
+</html>

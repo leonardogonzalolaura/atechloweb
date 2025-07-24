@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <title>atechlo.com | Próximamente dev</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/chat.css">
+    
     
 </head>
 <body>
@@ -46,17 +48,58 @@
      <!-- Efecto partículas (opcional) -->
     <canvas id="particles"></canvas>
 
-
-     <section class="banner">
-    <div class="banner-overlay"></div>
-    <div class="banner-content">
-        <h1>
-            <span class="text-green">SOLUCIONES TI Y <br>LOGISTICA</span><br>
-            <span class="text-white">A MEDIDA PARA <br> TU <strong>EMPRESA</strong></span>
-        </h1>
-        <a href="#contacto" class="contact-btn">Contáctanos</a>
+<script src="js\carrusel.js"></script>
+    
+    <!-- Carrusel de Banners -->
+<section class="carousel-section">
+  <div class="carousel-container">
+    <!-- Banner 1 -->
+    <div class="carousel-slide active">
+      <img src="img\servicio 4.4.jpg" alt="Consultoría Digital" class="carousel-img">
+      <div class="carousel-overlay"></div>
+      <div class="carousel-content">
+        <h2>Transforma tu Negocio</h2>
+        <p>Soluciones digitales que generan resultados reales</p>
+        <a href="#servicios" class="carousel-btn">VER SERVICIOS</a>
+      </div>
     </div>
+    
+    <!-- Banner 2 -->
+    <div class="carousel-slide">
+      <img src="img\SERVICIO 2.2.jpg" alt="Desarrollo de Software" class="carousel-img">
+      <div class="carousel-overlay"></div>
+      <div class="carousel-content">
+        <h2>Software a Tu Medida</h2>
+        <p>Desarrollamos lo que necesitas, sin complicaciones</p>
+        <a href="#servicios" class="carousel-btn">VER SERVICIOS</a>
+      </div>
+    </div>
+    
+    <!-- Banner 3 -->
+    <div class="carousel-slide">
+      <img src="img\SERVICIO 3.3.jpg" alt="Infraestructura IT" class="carousel-img">
+      <div class="carousel-overlay"></div>
+      <div class="carousel-content">
+        <h2>Infraestructura Robustas</h2>
+        <p>Redes seguras y escalables para tu crecimiento</p>
+        <a href="#servicios" class="carousel-btn">VER SERVICIOS</a>
+      </div>
+    </div>
+    
+    <!-- Controles -->
+    <button class="carousel-control prev">❮</button>
+    <button class="carousel-control next">❯</button>
+    
+    <!-- Indicadores -->
+    <div class="carousel-indicators">
+      <span class="indicator active"></span>
+      <span class="indicator"></span>
+      <span class="indicator"></span>
+    </div>
+  </div>
 </section>
+
+
 
 <section class="services-section">
   <div class="section-header">
@@ -83,7 +126,7 @@
           <div class="green-dots">●●●●</div>
           <p>Ofrecemos soluciones estratégicas para transformar tu negocio. Analizamos tus desafíos, diseñamos estrategias personalizadas e implementamos herramientas tecnológicas que optimizan procesos, aumentan tu visibilidad y generan resultados tangibles. Desde la digitalización de operaciones hasta la maximización de tu presencia online, te acompañamos en cada paso.
 </p>
-          <a href="#" class="interest-btn">ME INTERESA</a>
+          <a href="servicios.html" class="interest-btn">ME INTERESA</a>
         </div>
       </div>
     </div>
@@ -352,5 +395,6 @@
   <span>Asistente Digital</span>
 </button>
 <script src="js/chatbot.js"></script>
+<script src="js\carrusel.js"></script>
 </body>
 </html>
