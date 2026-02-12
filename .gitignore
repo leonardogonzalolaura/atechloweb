@@ -1,12 +1,21 @@
+# System & OS
 .bash_history
 *.log
 *.tmp
 *@github.com
 .ssh/config
-.env
-/config/config.js
-*.secret.*
-secrets/
+
+# Environment & Secrets
 .env
 .env.local
 .env*.local
+/config/config.js
+*.secret.*
+secrets/
+
+# Dependencies
+node_modules/
+dist/
+build/
+.DS_Store
+Thumbs.db

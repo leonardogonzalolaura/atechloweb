@@ -1,0 +1,186 @@
+/* ============================================
+   REFINAMIENTO DE CHATBOT AURA - V3 (ULTRA-COMPACTO)
+   ============================================ */
+
+.ai-chatbot-container {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 280px;
+    /* Tamaño ultra-compacto */
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 3000;
+    display: none;
+    flex-direction: column;
+    border-radius: 12px;
+    /* Bordes más rectos/serios */
+    border: 1px solid rgba(0, 51, 102, 0.1);
+    box-shadow: 0 8px 30px rgba(0, 31, 64, 0.1);
+    overflow: hidden;
+    font-family: 'Montserrat', sans-serif;
+    /* Alineación total */
+}
+
+.ai-chatbot-container.active {
+    display: flex;
+    animation: fadeInSlide 0.3s ease-out;
+}
+
+@keyframes fadeInSlide {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Header Alineado a Marca */
+.chatbot-header {
+    background: #003366;
+    /* Azul profundo corporativo */
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.chatbot-avatar-container {
+    position: relative;
+    width: 32px;
+    height: 32px;
+}
+
+.chatbot-avatar {
+    width: 100%;
+    height: 100%;
+    background: white;
+    border-radius: 50%;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chatbot-header h3 {
+    color: white;
+    font-size: 0.95rem;
+    /* Más pequeño */
+    font-weight: 600;
+    margin: 0;
+    flex-grow: 1;
+    letter-spacing: 0.5px;
+}
+
+.status-indicator {
+    width: 8px;
+    height: 8px;
+    background: #82f065;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border: 1.5px solid #003366;
+}
+
+/* Área de Mensajes Compacta */
+.chatbot-messages {
+    background: #f8fafc;
+    height: 300px;
+    /* Altura reducida */
+    padding: 15px 12px;
+    overflow-y: auto;
+}
+
+.message {
+    margin-bottom: 12px;
+    max-width: 90%;
+}
+
+.message-content {
+    padding: 10px 12px;
+    font-size: 0.85rem;
+    /* Tipografía técnica compacta */
+    line-height: 1.4;
+    border-radius: 10px;
+}
+
+.bot-message .message-content {
+    background: white;
+    color: #334155;
+    border: 1px solid #e2e8f0;
+}
+
+.user-message .message-content {
+    background: #0066cc;
+    /* Azul marca */
+    color: white;
+}
+
+.message-time {
+    font-size: 0.65rem;
+    color: #94a3b8;
+    margin-top: 3px;
+}
+
+/* Input Minimalista */
+.chatbot-input {
+    padding: 10px 12px;
+    background: white;
+    border-top: 1px solid #f1f5f9;
+    display: flex;
+    gap: 8px;
+}
+
+.chatbot-input textarea {
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 8px 10px;
+    font-size: 0.85rem;
+    height: 36px;
+    background: #ffffff;
+}
+
+#sendMessage {
+    background: #0066cc;
+    border: none;
+    border-radius: 6px;
+    width: 36px;
+    height: 36px;
+}
+
+/* Toggle Burbuja - Más pequeña y elegante */
+.chatbot-toggle {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 55px;
+    /* Reducido */
+    height: 55px;
+    background: #003366;
+    border: 3px solid white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 20px rgba(0, 51, 102, 0.3);
+    cursor: pointer;
+    transition: all 0.3s;
+    z-index: 3001;
+}
+
+.chatbot-toggle img {
+    width: 28px;
+    height: 28px;
+}
+
+/* Otros elementos ocultos */
+.chatbot-toggle span,
+.chatbot-footer {
+    display: none;
+}

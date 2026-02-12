@@ -1,0 +1,29 @@
+{
+  "name": "atechloweb",
+  "version": "1.0.0",
+  "description": "ATECHLO - Soluciones TI y Logística",
+  "scripts": {
+    "minify:css": "cleancss -o css/styles.min.css css/styles.css && cleancss -o css/chat.min.css css/chat.css",
+    "minify:js:script": "terser js/script.js -o js/script.min.js --compress --mangle",
+    "minify:js:chatbot": "terser js/chatbot.js -o js/chatbot.min.js --compress --mangle",
+    "minify:js:carrusel": "terser js/carrusel.js -o js/carrusel.min.js --compress --mangle",
+    "minify:js:banerservice": "terser js/banerservice.js -o js/banerservice.min.js --compress --mangle",
+    "minify:js:pagina": "terser js/pagina.js -o js/pagina.min.js --compress --mangle",
+    "minify:js:stas": "terser js/stas.js -o js/stas.min.js --compress --mangle",
+    "minify:js": "npm run minify:js:script && npm run minify:js:chatbot && npm run minify:js:carrusel && npm run minify:js:banerservice && npm run minify:js:pagina && npm run minify:js:stas",
+    "build": "npm run minify:css && npm run minify:js",
+    "watch": "npm run build"
+  },
+  "keywords": [
+    "atechlo",
+    "website",
+    "soluciones-ti",
+    "logistica"
+  ],
+  "author": "ATECHLO",
+  "license": "MIT",
+  "devDependencies": {
+    "clean-css-cli": "^5.6.3",
+    "terser": "^5.31.0"
+  }
+}

@@ -1,0 +1,195 @@
+/* ============================================
+   HERO / CAROUSEL MODERN STYLES
+   ATECHLO Website - Modular Refactoring
+   ============================================ */
+
+.carousel-section {
+    width: 100%;
+    position: relative;
+    margin: 0 auto;
+    overflow: hidden;
+    background-color: #0066cc;
+    /* Fallback brand color */
+}
+
+.carousel-container {
+    position: relative;
+    width: 100%;
+    height: 70vh;
+    min-height: 400px;
+}
+
+.carousel-slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    background-color: #0066cc;
+}
+
+.carousel-slide.active {
+    opacity: 1;
+}
+
+.carousel-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 102, 204, 0.4) 0%, rgba(0, 0, 0, 0.4) 100%);
+    transition: background 0.5s ease;
+}
+
+.carousel-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    z-index: 2;
+    width: 80%;
+}
+
+.carousel-content h2 {
+    font-size: clamp(2.2rem, 6vw, 4rem);
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+    letter-spacing: -1px;
+}
+
+.carousel-content p {
+    font-size: clamp(1.1rem, 3vw, 1.8rem);
+    margin-bottom: 35px;
+    font-weight: 300;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-btn {
+    display: inline-block;
+    padding: 14px 40px;
+    background: linear-gradient(135deg, #ff6600, #ff8533);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 700;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 20px rgba(255, 102, 0, 0.3);
+    letter-spacing: 1px;
+}
+
+.carousel-btn:hover {
+    background: linear-gradient(135deg, #e65c00, #ff6600);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 15px 25px rgba(255, 102, 0, 0.4);
+}
+
+/* Controles */
+.carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.carousel-control:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-control.prev {
+    left: 30px;
+}
+
+.carousel-control.next {
+    right: 30px;
+}
+
+/* Indicadores */
+.carousel-indicators {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 15px;
+    z-index: 10;
+}
+
+.indicator {
+    width: 40px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+.indicator.active {
+    background: #82f065;
+    width: 60px;
+}
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 768px) {
+    .carousel-container {
+        height: 60vh;
+    }
+
+    .carousel-content {
+        width: 90%;
+    }
+
+    .carousel-control {
+        width: 40px;
+        height: 40px;
+    }
+
+    .carousel-control.prev {
+        left: 10px;
+    }
+
+    .carousel-control.next {
+        right: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel-container {
+        height: 65vh;
+    }
+
+    .carousel-content h2 {
+        font-size: 2rem;
+    }
+
+    .carousel-content p {
+        font-size: 1rem;
+    }
+
+    .carousel-btn {
+        padding: 12px 30px;
+        font-size: 0.9rem;
+    }
+}

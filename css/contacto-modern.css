@@ -1,0 +1,254 @@
+/* ============================================
+   CONTACT SECTION - ALIGNMENT & HARMONY FIX
+   ATECHLO Website - Premium Corporate Style
+   ============================================ */
+
+.contacto-section {
+    background-color: #ffffff;
+}
+
+/* --- Contact Header --- */
+.contacto-header {
+    background: linear-gradient(135deg, #001a33 0%, #003366 100%);
+    padding: 60px 0;
+    color: white;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.contacto-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(rgba(130, 240, 101, 0.08) 1px, transparent 1px);
+    background-size: 30px 30px;
+    pointer-events: none;
+}
+
+.contacto-title {
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    font-weight: 800;
+    margin-bottom: 15px;
+    letter-spacing: -0.5px;
+}
+
+.contacto-intro {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 700px;
+    margin: 0 auto 30px;
+    line-height: 1.6;
+}
+
+.contacto-quick-info {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.quick-info-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    color: #82f065;
+}
+
+.quick-info-item span {
+    color: white;
+}
+
+/* --- Contact Main Content --- */
+.contacto-main {
+    padding: 80px 0;
+    background: #f8fafc;
+}
+
+.contacto-grid-modern {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 60px;
+    align-items: start;
+}
+
+/* --- Info Column --- */
+.info-subtitle {
+    font-size: 1.5rem;
+    color: #003366;
+    font-weight: 800;
+    margin-bottom: 30px;
+}
+
+.benefit-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.benefit-item {
+    display: flex;
+    gap: 15px;
+}
+
+.benefit-icon {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    background: #f0f9ff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.benefit-text h4 {
+    font-size: 1rem;
+    color: #0066cc;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+.benefit-text p {
+    font-size: 0.9rem;
+    color: #64748b;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.contacto-img-wrapper {
+    margin-top: 40px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.contacto-imagen-modern {
+    width: 100%;
+    filter: grayscale(20%);
+    transition: filter 0.3s;
+}
+
+.contacto-img-wrapper:hover .contacto-imagen-modern {
+    filter: grayscale(0%);
+}
+
+/* --- Form Card --- */
+.form-card {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 51, 102, 0.05);
+    border: 1px solid #f1f5f9;
+}
+
+.form-title {
+    font-size: 1.4rem;
+    color: #003366;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.form-subtitle {
+    font-size: 0.9rem;
+    color: #64748b;
+    margin-bottom: 25px;
+}
+
+.contacto-form-modern {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-row-modern {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.form-group-modern {
+    position: relative;
+    margin-bottom: 5px;
+}
+
+.form-group-modern input,
+.form-group-modern select,
+.form-group-modern textarea {
+    width: 100%;
+    padding: 20px 12px 10px;
+    border: none;
+    border-bottom: 2px solid #e2e8f0;
+    border-radius: 0;
+    font-size: 1rem;
+    background: transparent;
+    transition: all 0.3s;
+    outline: none;
+}
+
+.form-group-modern label {
+    position: absolute;
+    left: 12px;
+    top: 18px;
+    color: #94a3b8;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    background: transparent;
+}
+
+/* Floating Label Logic */
+.form-group-modern input:focus+label,
+.form-group-modern input:not(:placeholder-shown)+label,
+.form-group-modern textarea:focus+label,
+.form-group-modern textarea:not(:placeholder-shown)+label,
+.form-group-modern select:focus+label,
+.form-group-modern select:valid+label {
+    top: 0;
+    font-size: 0.8rem;
+    color: #0066cc;
+    font-weight: 700;
+}
+
+/* Animated Bar */
+.form-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #0066cc, #82f065);
+    transition: width 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.form-group-modern input:focus~.form-bar,
+.form-group-modern textarea:focus~.form-bar,
+.form-group-modern select:focus~.form-bar {
+    width: 100%;
+}
+
+.contacto-btn-modern {
+    background: #0066cc;
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 6px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.contacto-btn-modern:hover {
+    background: #004d99;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .form-row-modern {
+        grid-template-columns: 1fr;
+    }
+}

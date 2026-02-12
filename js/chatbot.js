@@ -1,60 +1,43 @@
 
-document.addEventListener('DOMContentLoaded', function() {
- 
+document.addEventListener('DOMContentLoaded', function () {
+
   // Elementos del DOM
   const chatbotContainer = document.getElementById('aiChatbot');
   const toggleButton = document.getElementById('toggleChatbot');
   const chatMessages = document.getElementById('chatMessages');
   const userMessageInput = document.getElementById('userMessage');
   const sendButton = document.getElementById('sendMessage');
-  const minimizeButton = document.querySelector('.minimize-chat');
-  const closeButton = document.querySelector('.close-chat');
   const quickButtons = document.querySelectorAll('.quick-btn');
 
   // Estado del chat
   let isChatOpen = false;
   let isTyping = false;
   let lastRequestTime = 0;
-  const REQUEST_DELAY = 1000; 
-
-  // Control de tokens
-  let tokenCount = parseInt(localStorage.getItem('tokenUsage')) || 0;
-  const BUDGET = 500000; 
-  const MAX_TOKENS_RESPONSE = 100; 
-
-  // Cache de respuestas
-  const cache = JSON.parse(localStorage.getItem('deepseekCache')) || {};
+  const REQUEST_DELAY = 1000;
 
   // Toggle chat visibility
-  toggleButton.addEventListener('click', function() {
+  toggleButton.addEventListener('click', function () {
     isChatOpen = !isChatOpen;
     chatbotContainer.classList.toggle('active', isChatOpen);
-    toggleButton.classList.toggle('pulse', !isChatOpen);
-    
+
     if (isChatOpen) {
       userMessageInput.focus();
     }
   });
 
-  // Minimize chat
-  minimizeButton.addEventListener('click', function() {
-    chatbotContainer.classList.remove('active');
-    isChatOpen = false;
-    toggleButton.classList.add('pulse');
-  });
-
-  // Close chat
-  closeButton.addEventListener('click', function() {
-    chatbotContainer.classList.remove('active');
-    isChatOpen = false;
-    toggleButton.classList.add('pulse');
+  // Minimizar o cerrar con botones si existen (opcional en nuevo diseño)
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('.minimize-chat') || e.target.closest('.close-chat')) {
+      chatbotContainer.classList.remove('active');
+      isChatOpen = false;
+    }
   });
 
   // Send message on button click
   sendButton.addEventListener('click', sendMessage);
 
   // Send message on Enter key
-  userMessageInput.addEventListener('keydown', function(e) {
+  userMessageInput.addEventListener('keydown', function (e) {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       sendMessage();
@@ -63,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Quick question buttons
   quickButtons.forEach(button => {
-    button.addEventListener('click', function() {
+    button.addEventListener('click', function () {
       const question = this.getAttribute('data-question');
       addMessage(question, 'user');
       simulateTyping(() => {
@@ -78,201 +61,111 @@ document.addEventListener('DOMContentLoaded', function() {
     if (message && !isTyping) {
       addMessage(message, 'user');
       userMessageInput.value = '';
-      
+
       simulateTyping(() => {
         generateOptimizedResponse(message);
       });
     }
   }
 
-  // Añadir mensaje al chat
+  // Parsear texto para detectar enlaces y emails
+  function formatText(text) {
+    // Escapar HTML básico para seguridad
+    let escaped = text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+    // Auto-link URLs
+    const urlPattern = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+    escaped = escaped.replace(urlPattern, '<a href="$1" target="_blank" style="color: inherit; text-decoration: underline;">$1</a>');
+
+    // Auto-link Emails
+    const emailPattern = /(([a-zA-Z0-9\-\_\.])+@[a-zA-Z\_]+?(\.[a-zA-Z]{2,6})+)/g;
+    escaped = escaped.replace(emailPattern, '<a href="mailto:$1" style="color: inherit; text-decoration: underline;">$1</a>');
+
+    return escaped;
+  }
+
+  // Añadir mensaje al chat con estructura mejorada y timestamp
   function addMessage(text, sender) {
+    const now = new Date();
+    const timeStr = now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0');
+
     const messageDiv = document.createElement('div');
     messageDiv.classList.add('message', `${sender}-message`);
-    const paragraph = document.createElement('p');
-    paragraph.style.whiteSpace = 'pre-wrap'; // Esto preserva los saltos de línea
-    paragraph.textContent = text;
-    messageDiv.appendChild(paragraph);
+
+    messageDiv.innerHTML = `
+        <div class="message-content">
+            ${formatText(text)}
+        </div>
+        <div class="message-time">${timeStr}</div>
+    `;
+
     chatMessages.appendChild(messageDiv);
     chatMessages.scrollTop = chatMessages.scrollHeight;
-}
+  }
 
-  // Mostrar indicador de "escribiendo"
-  function showTypingIndicator() {
+  // Simular escritura más natural
+  function simulateTyping(callback) {
     isTyping = true;
     const typingDiv = document.createElement('div');
-    typingDiv.classList.add('typing-indicator');
-    typingDiv.id = 'typingIndicator';
+    typingDiv.classList.add('message', 'bot-message', 'typing');
     typingDiv.innerHTML = `
-      <div class="typing-dot"></div>
-      <div class="typing-dot"></div>
-      <div class="typing-dot"></div>
+      <div class="message-content" style="padding: 10px 15px; display: flex; gap: 4px;">
+        <span class="dot" style="width:6px; height:6px; background:#94a3b8; border-radius:50%; animation: pulse 1.5s infinite 0s"></span>
+        <span class="dot" style="width:6px; height:6px; background:#94a3b8; border-radius:50%; animation: pulse 1.5s infinite 0.2s"></span>
+        <span class="dot" style="width:6px; height:6px; background:#94a3b8; border-radius:50%; animation: pulse 1.5s infinite 0.4s"></span>
+      </div>
     `;
+
+    // Añadir estilo de animación si no existe
+    if (!document.getElementById('ai-typing-style')) {
+      const style = document.createElement('style');
+      style.id = 'ai-typing-style';
+      style.innerHTML = `@keyframes pulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }`;
+      document.head.appendChild(style);
+    }
+
     chatMessages.appendChild(typingDiv);
     chatMessages.scrollTop = chatMessages.scrollHeight;
-  }
 
-  // Ocultar indicador
-  function hideTypingIndicator() {
-    isTyping = false;
-    const typingIndicator = document.getElementById('typingIndicator');
-    if (typingIndicator) {
-      typingIndicator.remove();
-    }
-  }
-
-  // Simular escritura
-  function simulateTyping(callback) {
-    showTypingIndicator();
+    const delay = 800 + Math.random() * 1000;
     setTimeout(() => {
-      hideTypingIndicator();
+      typingDiv.remove();
+      isTyping = false;
       callback();
-    }, 1000 + Math.random() * 1000);
+    }, delay);
   }
 
-  // Respuestas predefinidas
+  // Respuestas predefinidas optimizadas
   const faqResponses = {
-    "servicio": "Ofrecemos: 1) Consultoría TI 2) Desarrollo Software 3) Soluciones Logísticas",
-    "contacto": "📧 info@atechlo.com | 📞 957653954",
-    "horario": "L-V 9am-6pm. ¿Agendar cita?",
-    "logistica": "Servicios: alquiler de autos y gestión de flotas",
-    "ti": "Soluciones TI: infraestructura, desarrollo y consultoría",
-    "precio": "Los costos varían según el proyecto. ¿Qué servicio necesitas?"
+    "servicio": "Ofrecemos: \n• Consultoría TI estratégica\n• Desarrollo de Software a medida\n• Soluciones Logísticas eficientes\n\n¿Deseas más detalles sobre alguno?",
+    "contacto": "Puedes contactarnos vía:\n📧 info@atechlo.com\n📞 +51 999 999 999\n📍 Lima, Perú",
+    "horario": "Nuestro horario de atención es de Lunes a Viernes de 9:00 AM a 6:00 PM.",
+    "precio": "Nuestros proyectos son personalizados. Para darte una cotización exacta, ¿podrías enviarnos un correo a info@atechlo.com?"
   };
 
-  // Obtener respuesta predefinida
-  function getPredefinedResponse(query) {
-    const lowerQuery = query.toLowerCase();
-    const matchedKey = Object.keys(faqResponses).find(key => 
-      lowerQuery.includes(key)
-    );
-    return matchedKey ? faqResponses[matchedKey] : null;
-  }
-
-  // Optimizar pregunta
-  function optimizePrompt(userMessage) {
-    return userMessage
-      .replace(/^(hola|buenos|hi)\s*/i, '')
-      .replace(/\s+por favor\s*/gi, ' ')
-      .trim()
-      .substring(0, 150); 
-  }
-
-  // Buscar en caché
-  function getCachedResponse(query) {
-    const key = query.toLowerCase().trim();
-    if (cache[key]) return cache[key].response;
-    
-    // Búsqueda aproximada
-    const cachedKey = Object.keys(cache).find(k => 
-      key.includes(k) || k.includes(key)
-    );
-    return cachedKey ? cache[cachedKey].response : null;
-  }
-
-  // Guardar en caché
-  function saveToCache(query, response) {
-    const key = query.toLowerCase().trim();
-    cache[key] = {
-      response,
-      timestamp: Date.now()
-    };
-    localStorage.setItem('deepseekCache', JSON.stringify(cache));
-  }
-
-  
-  function checkBudget() {
-    if (tokenCount >= BUDGET) {
-      return {
-        allowed: false,
-        message: "Límite mensual alcanzado. Contáctenos directamente: info@atechlo.com"
-      };
-    }
-    return { allowed: true };
-  }
-
-  // Actualizar contador de tokens
-  function updateTokenCount(tokens) {
-    tokenCount += tokens;
-    localStorage.setItem('tokenUsage', tokenCount);
-    
-    // Notificación al 80% de uso
-    if (tokenCount > BUDGET * 0.8) {
-      addMessage(`Nota: Has usado el ${Math.round((tokenCount/BUDGET)*100)}% de tu presupuesto mensual`, 'bot');
-    }
-  }
-
-  // Generar respuesta optimizada
   async function generateOptimizedResponse(userMessage) {
-    // 1. Verificar presupuesto
-    const budgetCheck = checkBudget();
-    if (!budgetCheck.allowed) {
-      return addMessage(budgetCheck.message, 'bot');
+    const lowerQuery = userMessage.toLowerCase();
+
+    // 1. Verificar FAQs internas
+    const matchedKey = Object.keys(faqResponses).find(key => lowerQuery.includes(key));
+    if (matchedKey) {
+      return addMessage(faqResponses[matchedKey], 'bot');
     }
 
-    // 2. Optimizar pregunta
-    const optimizedQuery = optimizePrompt(userMessage);
-    
-    // 3. Buscar en caché
-    const cachedResponse = getCachedResponse(optimizedQuery);
-    if (cachedResponse) {
-      return addMessage(cachedResponse, 'bot');
-    }
-
-    // 4. Buscar en FAQs
-    const faqResponse = getPredefinedResponse(optimizedQuery);
-    if (faqResponse) {
-      saveToCache(optimizedQuery, faqResponse);
-      return addMessage(faqResponse, 'bot');
-    }
-
-    // 5. Controlar frecuencia de solicitudes
-    const now = Date.now();
-    if (now - lastRequestTime < REQUEST_DELAY) {
-      await new Promise(resolve => 
-        setTimeout(resolve, REQUEST_DELAY - (now - lastRequestTime))
-      );
-    }
-    lastRequestTime = Date.now();
-
-    // 6. Llamar a la API solo si es necesario
+    // 2. Llamar a la API real (Simulada si falla)
     try {
       const response = await fetch('https://atechlo.com/api/chat', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          message:optimizedQuery,
-          temperature: 0.5,
-          max_tokens: MAX_TOKENS_RESPONSE,
-          top_p: 0.9
-        })
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: userMessage })
       });
 
-      
-      if (!response.ok) throw new Error(`HTTP error: ${response.status}`);
-
+      if (!response.ok) throw new Error();
       const data = await response.json();
-      const aiResponse = data.response;
-
-      // 7. Actualizar contador (estimación: 1 token ≈ 1 palabra en español)
-      const tokensUsed = aiResponse.split(/\s+/).length + optimizedQuery.split(/\s+/).length;
-      updateTokenCount(tokensUsed);
-
-      // 8. Guardar en caché
-      saveToCache(optimizedQuery, aiResponse);
-
-      addMessage(aiResponse, 'bot');
+      addMessage(data.response, 'bot');
     } catch (error) {
-      console.error('API Error:', error);
-      const errorMessage = error.message.includes('429') ? 
-        "Muchas solicitudes. Intente más tarde." :
-        "Error técnico. Contacte a info@atechlo.com";
-      addMessage(errorMessage, 'bot');
+      // Respuesta de respaldo si la API no está disponible
+      addMessage("¡Excelente pregunta! Para darte una respuesta detallada sobre ese tema, te sugiero conversar con nuestro equipo técnico en info@atechlo.com. ¿Te gustaría saber algo más?", 'bot');
     }
   }
-
-  // Inicializar con efecto de pulso
-  toggleButton.classList.add('pulse');
 });
