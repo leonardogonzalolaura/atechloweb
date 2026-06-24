@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "ATECHLO - Soluciones TI y Logística",
   "scripts": {
-    "minify:css": "cleancss -o css/styles.min.css css/styles.css && cleancss -o css/components.min.css css/components.css",
+    "minify:css": "cleancss -o css/styles.min.css css/styles.css && cleancss -o css/components.min.css css/components.css && cleancss -o css/portfolio.min.css css/portfolio.css",
     "minify:js": "terser js/main.js -o js/main.min.js --compress --mangle",
     "build": "npm run minify:css && npm run minify:js",
     "watch": "npm run build"
