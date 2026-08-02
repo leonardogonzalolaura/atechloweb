@@ -296,40 +296,38 @@ document.addEventListener('DOMContentLoaded', function () {
     // ============================================
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
-        contactForm.addEventListener('submit', async function (e) {
+        contactForm.addEventListener('submit', function (e) {
             e.preventDefault();
             const submitBtn = contactForm.querySelector('button[type="submit"]');
             const originalBtnText = submitBtn.innerText;
-            submitBtn.innerText = 'Enviando...';
+            const nombre = (contactForm.querySelector('#nombre').value || '').trim();
+            const apellido = (contactForm.querySelector('#apellido').value || '').trim();
+            const compania = (contactForm.querySelector('#compania').value || '').trim();
+            const email = (contactForm.querySelector('#email').value || '').trim();
+            const telefono = (contactForm.querySelector('#telefono').value || '').trim();
+            const servicio = (contactForm.querySelector('#servicio').value || '').trim();
+            const mensaje = (contactForm.querySelector('#mensaje').value || '').trim();
+            const cuerpo = [
+                'Hola ATECHLO, les escribo desde el sitio web.',
+                '',
+                'Nombre: ' + nombre + ' ' + apellido,
+                'Compañía: ' + (compania || 'No indicada'),
+                'Correo: ' + email,
+                'Teléfono: ' + (telefono || 'No indicado'),
+                'Servicio de interés: ' + servicio,
+                'Mensaje: ' + mensaje
+            ].join('\n');
+            const gmailUrl = 'https://mail.google.com/mail/?view=cm&fs=1&to=cotizacion@atechlo.com&su=' +
+                encodeURIComponent('Contacto desde el sitio web de ATECHLO') + '&body=' +
+                encodeURIComponent(cuerpo);
+            submitBtn.innerText = 'Abriendo Gmail...';
             submitBtn.disabled = true;
-            const formData = new FormData(contactForm);
-            try {
-                const response = await fetch(contactForm.action, {
-                    method: 'POST',
-                    body: formData,
-                    headers: { 'Accept': 'application/json' }
-                });
-                if (response.ok) {
-                    submitBtn.innerText = '¡Enviado!';
-                    submitBtn.style.background = '#82f065';
-                    contactForm.reset();
-                    setTimeout(() => {
-                        submitBtn.innerText = originalBtnText;
-                        submitBtn.disabled = false;
-                        submitBtn.style.background = '';
-                    }, 4000);
-                } else {
-                    throw new Error();
-                }
-            } catch (error) {
-                submitBtn.innerText = 'Error';
-                submitBtn.style.background = '#ff4d4d';
-                setTimeout(() => {
-                    submitBtn.innerText = originalBtnText;
-                    submitBtn.disabled = false;
-                    submitBtn.style.background = '';
-                }, 3000);
-            }
+            window.open(gmailUrl, '_blank');
+            contactForm.reset();
+            setTimeout(() => {
+                submitBtn.innerText = originalBtnText;
+                submitBtn.disabled = false;
+            }, 4000);
         });
     }
 });

@@ -831,7 +831,7 @@
         </div>
     </div>
 
-    <script src="js/main.js?v=2.3"></script>
+    <script src="js/main.js?v=2.4"></script>
 
     <a href="https://wa.me/51957653954?text=Hola%20ATECHLO,%20estoy%20interesado%20en%20sus%20servicios." class="whatsapp-float" target="_blank" rel="noopener noreferrer">
         <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
@@ -868,14 +868,14 @@
         function buildQuoteRow(nombre) {
             const wa = 'https://wa.me/51957653954?text=' +
                 encodeURIComponent('Hola ATECHLO, me interesa cotizar el proyecto "' + nombre + '".');
-            const correo = 'mailto:cotizacion@atechlo.com?subject=' +
+            const correo = 'https://mail.google.com/mail/?view=cm&fs=1&to=cotizacion@atechlo.com&su=' +
                 encodeURIComponent('Cotización - ' + nombre) + '&body=' +
                 encodeURIComponent('Hola ATECHLO, me interesa cotizar el proyecto "' + nombre + '".');
             return '<span class="demo-quote-label">Solicitar cotización:</span>' +
                 '<div class="demo-quote-btns">' +
                 '<a class="demo-quote-btn wa" href="' + wa + '" target="_blank" rel="noopener noreferrer">' +
                 waIcon + 'Cotizar por WhatsApp</a>' +
-                '<a class="demo-quote-btn mail" href="' + correo + '">' +
+                '<a class="demo-quote-btn mail" href="' + correo + '" target="_blank" rel="noopener noreferrer">' +
                 mailIcon + 'Cotizar por correo</a>' +
                 '</div>';
         }
@@ -1022,38 +1022,15 @@
                 label.textContent = ' Enviando...';
 
                 if (canal === 'correo') {
-                    const data = new FormData();
-                    data.append('nombre', qNombre.value.trim());
-                    data.append('email', qEmail.value.trim());
-                    data.append('telefono', qTelefono.value.trim());
-                    data.append('tipo', qTipo.value);
-                    data.append('descripcion', qDesc.value.trim());
-                    data.append('_subject', 'Cotización de proyecto - ' + qTipo.value);
-
-                    fetch('https://formspree.io/f/mqaeopzy', {
-                        method: 'POST',
-                        body: data,
-                        headers: { 'Accept': 'application/json' }
-                    }).then(function (response) {
-                        btn.classList.remove('is-loading');
-                        if (response.ok) {
-                            btn.classList.add('is-success');
-                            label.textContent = ' ¡Enviado!';
-                            quoteForm.reset();
-                            [qNombre, qEmail, qTelefono, qTipo, qDesc].forEach(function (f) {
-                                f.classList.remove('touched');
-                                f.closest('.quote-field').classList.remove('has-valid', 'has-error');
-                            });
-                            setTimeout(resetSendButtons, 4000);
-                        } else {
-                            throw new Error();
-                        }
-                    }).catch(function () {
-                        btn.classList.remove('is-loading');
-                        btn.classList.add('is-error');
-                        label.textContent = ' Error, inténtalo de nuevo';
-                        setTimeout(resetSendButtons, 4000);
-                    });
+                    const correoUrl = 'https://mail.google.com/mail/?view=cm&fs=1&to=cotizacion@atechlo.com&su=' +
+                        encodeURIComponent('Cotización de proyecto - ' + qTipo.value) + '&body=' +
+                        encodeURIComponent(mensaje);
+                    window.open(correoUrl, '_blank');
+                    btn.classList.remove('is-loading');
+                    btn.disabled = false;
+                    btn.classList.add('is-success');
+                    label.textContent = ' ¡Listo!';
+                    setTimeout(resetSendButtons, 4000);
                 } else {
                     window.open('https://wa.me/51957653954?text=' + encodeURIComponent(mensaje), '_blank');
                     setTimeout(resetSendButtons, 400);
