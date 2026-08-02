@@ -23,11 +23,34 @@
   <meta property="twitter:title" content="ATECHLO - Soluciones TI y Logística">
   <meta property="twitter:description" content="Soluciones tecnológicas y logísticas a medida para tu empresa">
   <meta property="twitter:image" content="img/logo1.png">
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <meta name="theme-color" content="#0066cc">
+  <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <title>ATECHLO - Soluciones TI y Logística | Transformación Digital</title>
-  <link rel="stylesheet" href="css/styles.css?v=2.0">
-  <link rel="stylesheet" href="css/components.css?v=2.0">
+  <link rel="stylesheet" href="css/styles.css?v=2.2">
+  <link rel="stylesheet" href="css/components.css?v=2.2">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "ATECHLO",
+    "url": "https://atechlo.com/",
+    "logo": "https://atechlo.com/img/logo1.png",
+    "description": "ATECHLO - Soluciones tecnológicas y logísticas a medida. Consultoría digital, desarrollo de software, infraestructura IT y gestión de flotas.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "PE"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer service",
+      "availableLanguage": "es"
+    }
+  }
+  </script>
 
 
 </head>
@@ -75,7 +98,7 @@
     <div class="carousel-container">
       <!-- Banner 1 -->
       <div class="carousel-slide active">
-        <img src="img/servicio-4.4.jpg" alt="Consultoría Digital" class="carousel-img" loading="lazy">
+        <img src="img/servicio-4.4.webp" alt="Consultoría Digital" class="carousel-img" loading="lazy">
         <div class="carousel-overlay"></div>
         <div class="carousel-content">
           <h2>Transforma tu Negocio</h2>
@@ -86,7 +109,7 @@
 
       <!-- Banner 2 -->
        <div class="carousel-slide">
-        <img src="img/SERVICIO-2.2.jpg" alt="Desarrollo de Software" class="carousel-img" loading="lazy">
+        <img src="img/SERVICIO-2.2.webp" alt="Desarrollo de Software" class="carousel-img" loading="lazy">
         <div class="carousel-overlay"></div>
         <div class="carousel-content">
           <h2>Software a Tu Medida</h2>
@@ -97,7 +120,7 @@
 
       <!-- Banner 3 -->
        <div class="carousel-slide">
-        <img src="img/SERVICIO-3.3.jpg" alt="Infraestructura IT" class="carousel-img" loading="lazy">
+        <img src="img/SERVICIO-3.3.webp" alt="Infraestructura IT" class="carousel-img" loading="lazy">
         <div class="carousel-overlay"></div>
         <div class="carousel-content">
           <h2>Infraestructura Robustas</h2>
@@ -137,46 +160,109 @@
       </h2>
     </div>
 
-    <div class="services-grid">
-      <!-- Card 1 -->
-      <div class="service-card">
-        <div class="service-image">
-          <img src="img/servicio1.png" alt="Consultoría Digital">
-          <div class="service-badge">Estrategia</div>
-        </div>
-        <div class="service-content">
-          <h3>CONSULTORIA DIGITAL</h3>
-          <p>Soluciones estratégicas para transformar tu negocio. Analizamos desafíos y diseñamos herramientas que
-            optimizan procesos y aumentan visibilidad.</p>
-          <a href="servicios.html" class="interest-btn">Ver Más</a>
-        </div>
-      </div>
-
-      <!-- Card 2 -->
-      <div class="service-card">
-        <div class="service-image">
-          <img src="img/servicio2.png" alt="Desarrollo de Software">
-          <div class="service-badge">Desarrollo</div>
-        </div>
-        <div class="service-content">
-          <h3>SOFTWARE A MEDIDA</h3>
-          <p>Creamos software priorizando funcionalidad y escalabilidad. Ideal para negocios que buscan soluciones
-            tecnológicas eficientes sin complicaciones.</p>
-          <a href="#" class="interest-btn">Ver Más</a>
+    <div class="leaves-grid">
+      <!-- Hoja 1 -->
+      <div class="leaf">
+        <button class="leaf-tab" aria-expanded="false">
+          <span class="leaf-icon">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="9" />
+              <circle cx="12" cy="12" r="4" />
+              <circle cx="12" cy="12" r="1" />
+            </svg>
+          </span>
+          <span class="leaf-title">CONSULTORÍA DIGITAL</span>
+          <span class="leaf-chevron">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </span>
+        </button>
+        <div class="leaf-body">
+          <div class="leaf-body-inner">
+            <p>Soluciones estratégicas para transformar tu negocio. Analizamos desafíos y diseñamos herramientas que
+              optimizan procesos y aumentan visibilidad.</p>
+            <a href="servicios.html" class="interest-btn">Ver Más</a>
+          </div>
         </div>
       </div>
 
-      <!-- Card 3 -->
-      <div class="service-card">
-        <div class="service-image">
-          <img src="img/servicio3.png" alt="Infraestructura IT">
-          <div class="service-badge">Soporte</div>
+      <!-- Hoja 2 -->
+      <div class="leaf">
+        <button class="leaf-tab" aria-expanded="false">
+          <span class="leaf-icon">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <polyline points="16 18 22 12 16 6" />
+              <polyline points="8 6 2 12 8 18" />
+            </svg>
+          </span>
+          <span class="leaf-title">SOFTWARE A MEDIDA</span>
+          <span class="leaf-chevron">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </span>
+        </button>
+        <div class="leaf-body">
+          <div class="leaf-body-inner">
+            <p>Creamos software priorizando funcionalidad y escalabilidad. Ideal para negocios que buscan soluciones
+              tecnológicas eficientes sin complicaciones.</p>
+            <a href="desarrollosoluciones.html" class="interest-btn">Ver Más</a>
+          </div>
         </div>
-        <div class="service-content">
-          <h3>INFRAESTRUCTURA IT</h3>
-          <p>Diseñamos infraestructuras IT adaptadas a tu operativa real. Servidores y redes seguras que realmente
-            soportan el crecimiento de tu empresa.</p>
-          <a href="#" class="interest-btn">Ver Más</a>
+      </div>
+
+      <!-- Hoja 3 -->
+      <div class="leaf">
+        <button class="leaf-tab" aria-expanded="false">
+          <span class="leaf-icon">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="2" y="2" width="20" height="8" rx="2" />
+              <rect x="2" y="14" width="20" height="8" rx="2" />
+              <line x1="6" y1="6" x2="6.01" y2="6" />
+              <line x1="6" y1="18" x2="6.01" y2="18" />
+            </svg>
+          </span>
+          <span class="leaf-title">INFRAESTRUCTURA IT</span>
+          <span class="leaf-chevron">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </span>
+        </button>
+        <div class="leaf-body">
+          <div class="leaf-body-inner">
+            <p>Diseñamos infraestructuras IT adaptadas a tu operativa real. Servidores y redes seguras que realmente
+              soportan el crecimiento de tu empresa.</p>
+            <a href="infraestructura.html" class="interest-btn">Ver Más</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hoja 4 (ejemplo: agrega tantas como necesites) -->
+      <div class="leaf">
+        <button class="leaf-tab" aria-expanded="false">
+          <span class="leaf-icon">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="1" y="6" width="18" height="12" rx="2" />
+              <path d="M23 7v10" />
+              <line x1="5" y1="10" x2="5" y2="14" />
+              <line x1="9" y1="10" x2="9" y2="14" />
+            </svg>
+          </span>
+          <span class="leaf-title">SOPORTE TÉCNICO</span>
+          <span class="leaf-chevron">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </span>
+        </button>
+        <div class="leaf-body">
+          <div class="leaf-body-inner">
+            <p>Acompañamiento continuo para mantener tus sistemas operativos y seguros. Respuesta ágil ante cualquier
+              incidencia y mantenimiento preventivo.</p>
+            <a href="servicios.html" class="interest-btn">Ver Más</a>
+          </div>
         </div>
       </div>
     </div>
@@ -385,7 +471,7 @@
 
             <!-- Imagen decorativa -->
             <div class="contacto-img-wrapper">
-              <img src="img/contacto-team.jpg" alt="Equipo profesional ATECHLO" class="contacto-imagen-modern">
+              <img src="img/contacto-team.webp" alt="Equipo profesional ATECHLO" class="contacto-imagen-modern">
             </div>
           </div>
 
@@ -578,7 +664,7 @@
 
 
 
-  <script src="js/main.js?v=2.0"></script>
+  <script src="js/main.js?v=2.2"></script>
 
   <!-- Botón flotante de WhatsApp -->
   <a href="https://wa.me/51957653954?text=Hola%20ATECHLO,%20estoy%20interesado%20en%20sus%20servicios."
@@ -588,6 +674,13 @@
         d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.94 3.659 1.437 5.634 1.437h.005c6.558 0 11.894-5.335 11.897-11.893a11.821 11.821 0 00-3.48-8.413z" />
     </svg>
   </a>
+
+  <!-- Bot�n volver arriba -->
+  <button id="back-to-top" class="back-to-top" aria-label="Volver arriba">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+      <polyline points="18 15 12 9 6 15" />
+    </svg>
+  </button>
 </body>
 
 </html>

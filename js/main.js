@@ -183,17 +183,53 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // ============================================
-    // PAGE TRANSITIONS (pagina.js)
+    // PAGE TRANSITIONS
     // ============================================
     document.querySelectorAll('a.interest-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.preventDefault();
-            document.body.classList.add('animate__animated', 'animate__fadeOut');
+            document.body.classList.add('page-exit');
             setTimeout(() => {
                 window.location.href = btn.getAttribute('href');
-            }, 500);
+            }, 400);
         });
     });
+
+    // ============================================
+    // CLOSE MOBILE MENU (outside click / ESC)
+    // ============================================
+    document.addEventListener('click', function (e) {
+        if (navLinks && navLinks.classList.contains('active')) {
+            if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
+                navLinks.classList.remove('active');
+                menuToggle.classList.remove('is-active');
+            }
+        }
+    });
+
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+            if (navLinks) navLinks.classList.remove('active');
+            if (menuToggle) menuToggle.classList.remove('is-active');
+        }
+    });
+
+    // ============================================
+    // BACK TO TOP
+    // ============================================
+    const backToTop = document.getElementById('back-to-top');
+    if (backToTop) {
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > 400) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+        backToTop.addEventListener('click', function () {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
 
     // ============================================
     // COUNTER ANIMATION (stas.js) - Fixed
@@ -233,6 +269,27 @@ document.addEventListener('DOMContentLoaded', function () {
             observer.observe(card);
         });
     }
+
+    // ============================================
+    // LEAVES ACCORDION (servicios)
+    // ============================================
+    document.querySelectorAll('.leaf-tab').forEach(tab => {
+        tab.addEventListener('click', function () {
+            const leaf = this.closest('.leaf');
+            if (!leaf) return;
+            const isOpen = leaf.classList.contains('open');
+            const siblings = leaf.parentElement.querySelectorAll('.leaf');
+            siblings.forEach(other => {
+                other.classList.remove('open');
+                const otherTab = other.querySelector('.leaf-tab');
+                if (otherTab) otherTab.setAttribute('aria-expanded', 'false');
+            });
+            if (!isOpen) {
+                leaf.classList.add('open');
+                this.setAttribute('aria-expanded', 'true');
+            }
+        });
+    });
 
     // ============================================
     // CONTACT FORM HANDLING
